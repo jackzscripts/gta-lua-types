@@ -1,4 +1,6 @@
 {
+    "version": "1.0.0",
+    "name": "gta-lua-types",
     "devDependencies": {
         "@types/node": "^18.8.2",
         "lua-types": "^2.13.0",
