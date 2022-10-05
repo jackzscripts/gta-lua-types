@@ -1,4 +1,6 @@
 /** @noSelf **/
+type MenuHandle = number
+
 declare namespace util {
     function yield(ms?: number): void
     function joaat(name: string): Hash
