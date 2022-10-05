@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["esnext"],
+    "moduleResolution": "node",
+    "types": ["@typescript-to-lua/language-extensions", "lua-types/5.4"],
+    "strict": true,
+    "module": "commonjs",
+    "declaration": true
+  },
+  "include": ["*.ts"],
+  "tstl": {
+    "luaTarget": "5.3",
+    "luaLibImport": "require",
+    // "sourceMapTraceback": true,
+    "buildMode": "library",
+  }
+}

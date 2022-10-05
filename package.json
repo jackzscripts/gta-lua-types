@@ -1,0 +1,12 @@
+{
+    "devDependencies": {
+        "@types/node": "^18.8.2",
+        "lua-types": "^2.13.0",
+        "typescript": "^4.7.4",
+        "typescript-to-lua": "^1.10.1"
+    },
+    "scripts": {
+        "build": "tstl"
+    },
+    "license": "MIT"
+}
