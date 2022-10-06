@@ -8,7 +8,7 @@
         "typescript-to-lua": "^1.10.1"
     },
     "scripts": {
-        "build": "tstl"
+        "build": "node scripts/convert-natives.js && node scripts/convert-stand.js"
     },
     "license": "MIT"
 }

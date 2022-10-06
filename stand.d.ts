@@ -95,25 +95,25 @@ declare let menu: {
 	ref_by_path: (path: string, tree_version?: int) => CommandRef
 	ref_by_rel_path: (base: int, path: string) => CommandRef
 	ref_by_command_name: (command_name: string) => CommandRef
-	list: (parent: CommandRef, menu_name: Label, command_names: LuaTable<any, string>, help_text: Label, on_click?: Function, on_back?: Function) => CommandRef | CommandUniqPtr
+	list: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, on_click?: Function, on_back?: Function) => CommandRef | CommandUniqPtr
 	/** perm may be any of: **/
-	action: (parent: CommandRef, menu_name: Label, command_names: LuaTable<any, string>, help_text: Label, on_click: Function, on_command?: Function, syntax?: string, perm?: int) => CommandRef | CommandUniqPtr
+	action: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, on_click: Function, on_command?: Function, syntax?: string, perm?: int) => CommandRef | CommandUniqPtr
 	/** Your on_change function will be called with on and click_type. **/
-	toggle: (parent: CommandRef, menu_name: Label, command_names: LuaTable<any, string>, help_text: Label, on_change: Function, default_on: boolean) => CommandRef | CommandUniqPtr
+	toggle: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, on_change: Function, default_on: boolean) => CommandRef | CommandUniqPtr
 	/** Your on_tick function will be called every tick that the toggle is checked; you should not call util.yield in this context. **/
-	toggle_loop: (parent: CommandRef, menu_name: Label, command_names: LuaTable<any, string>, help_text: Label, on_tick: Function, on_stop?: Function) => CommandRef | CommandUniqPtr
-	slider: (parent: CommandRef, menu_name: Label, command_names: LuaTable<any, string>, help_text: Label, min_value: int, max_value: int, default_value: int, step_size: int, on_change: Function) => CommandRef | CommandUniqPtr
+	toggle_loop: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, on_tick: Function, on_stop?: Function) => CommandRef | CommandUniqPtr
+	slider: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, min_value: int, max_value: int, default_value: int, step_size: int, on_change: Function) => CommandRef | CommandUniqPtr
 	/** Your on_change function will be called with value, prev_value and click_type. **/
-	slider_float: (parent: CommandRef, menu_name: Label, command_names: LuaTable<any, string>, help_text: Label, min_value: int, max_value: int, default_value: int, step_size: int, on_change: Function) => CommandRef | CommandUniqPtr
-	click_slider: (parent: CommandRef, menu_name: Label, command_names: LuaTable<any, string>, help_text: Label, min_value: int, max_value: int, default_value: int, step_size: int, on_click: Function) => CommandRef | CommandUniqPtr
+	slider_float: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, min_value: int, max_value: int, default_value: int, step_size: int, on_change: Function) => CommandRef | CommandUniqPtr
+	click_slider: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, min_value: int, max_value: int, default_value: int, step_size: int, on_click: Function) => CommandRef | CommandUniqPtr
 	/** Your on_click function will be called with value and click_type. **/
-	click_slider_float: (parent: CommandRef, menu_name: Label, command_names: LuaTable<any, string>, help_text: Label, min_value: int, max_value: int, default_value: int, step_size: int, on_click: Function) => CommandRef | CommandUniqPtr
+	click_slider_float: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, min_value: int, max_value: int, default_value: int, step_size: int, on_click: Function) => CommandRef | CommandUniqPtr
 	/** options must be table of list action item data or Label. List action item data is a table that contains at least a Label (menu_name), and can optionally have command_names and help_text. **/
-	list_select: (parent: CommandRef, menu_name: Label, command_names: LuaTable<any, string>, help_text: Label, options: any[], default_value: int, on_change: Function) => CommandRef | CommandUniqPtr
+	list_select: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, options: any[], default_value: int, on_change: Function) => CommandRef | CommandUniqPtr
 	/** options must be table of list action item data or Label. List action item data is a table that contains at least a Label (menu_name), and can optionally have command_names and help_text. **/
-	list_action: (parent: CommandRef, menu_name: Label, command_names: LuaTable<any, string>, help_text: Label, options: any[], on_item_click: Function) => CommandRef | CommandUniqPtr
+	list_action: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, options: any[], on_item_click: Function) => CommandRef | CommandUniqPtr
 	/** Your on_change function will be called with the string and click type. **/
-	text_input: (parent: CommandRef, menu_name: Label, command_names: LuaTable<any, string>, help_text: Label, on_change: Function, default_value: string) => CommandRef | CommandUniqPtr
+	text_input: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, on_change: Function, default_value: string) => CommandRef | CommandUniqPtr
 	/** Your on_change function will be called with a Colour as parameter. **/
 	colour: ColourMenu
 	/** Your on_change function will be called with a Colour as parameter. **/
@@ -124,9 +124,9 @@ declare let menu: {
 	readonly: (parent: CommandRef, menu_name: Label, value: string) => CommandRef | CommandUniqPtr
 	hyperlink: (parent: CommandRef, menu_name: Label, link: string, help_text: Label) => CommandRef | CommandUniqPtr
 	/** We highly recommend using menu.list_action instead of this, unless the options are really unimportant. **/
-	action_slider: (parent: CommandRef, menu_name: Label, command_names: LuaTable<any, string>, help_text: Label, options: Label[], on_click: Function) => CommandRef | CommandUniqPtr
+	action_slider: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, options: Label[], on_click: Function) => CommandRef | CommandUniqPtr
 	/** We highly recommend using menu.list_select instead of this, unless the options are really unimportant. **/
-	slider_text: (parent: CommandRef, menu_name: Label, command_names: LuaTable<any, string>, help_text: Label, options: Label[], on_click: Function) => CommandRef | CommandUniqPtr
+	slider_text: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, options: Label[], on_click: Function) => CommandRef | CommandUniqPtr
 	_delete: (command: CommandRef) => void
 	replace: (old: CommandRef, newValue: CommandUniqPtr) => CommandRef
 	detach: (command: CommandRef) => CommandUniqPtr
@@ -171,7 +171,7 @@ declare let menu: {
 	get_state: (command: CommandRef) => string
 	get_default_state: (command: CommandRef) => string
 	set_menu_name: (command: CommandRef | CommandUniqPtr, menu_name: Label) => void
-	set_command_names: (command: CommandRef | CommandUniqPtr, command_names: LuaTable<any, string>) => void
+	set_command_names: (command: CommandRef | CommandUniqPtr, command_names: string[]) => void
 	set_help_text: (command: CommandRef | CommandUniqPtr, help_text: Label) => void
 	set_visible: (command: CommandRef, visible: boolean) => void
 	set_value: (command: CommandRef, value: int | boolean | string) => void
