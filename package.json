@@ -10,5 +10,8 @@
     "scripts": {
         "build": "node scripts/convert-natives.js && node scripts/convert-stand.js"
     },
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.12"
+    }
 }

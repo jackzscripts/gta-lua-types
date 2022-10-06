@@ -45,8 +45,38 @@ interface CommandRef {
     min_value: number
     max_value: number
     step_size: number
-    list: (name: string, commandNames: string[], helpText: string, onLoad?: Function, onUnload?: Function) => CommandRef,
-    action: (name: string, commandNames: string[], helpText: string, onClick?: Function, onCommand?: Function, syntax?: string, permission?: CommandPermission) => CommandRef,
+    list: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, on_click?: Function, on_back?: Function) => CommandRef | CommandUniqPtr
+	/** perm may be any of: **/
+	action: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, on_click: Function, on_command?: Function, syntax?: string, perm?: int) => CommandRef | CommandUniqPtr
+	/** Your on_change function will be called with on and click_type. **/
+	toggle: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, on_change: Function, default_on: boolean) => CommandRef | CommandUniqPtr
+	/** Your on_tick function will be called every tick that the toggle is checked; you should not call util.yield in this context. **/
+	toggle_loop: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, on_tick: Function, on_stop?: Function) => CommandRef | CommandUniqPtr
+	slider: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, min_value: int, max_value: int, default_value: int, step_size: int, on_change: Function) => CommandRef | CommandUniqPtr
+	/** Your on_change function will be called with value, prev_value and click_type. **/
+	slider_float: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, min_value: int, max_value: int, default_value: int, step_size: int, on_change: Function) => CommandRef | CommandUniqPtr
+	click_slider: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, min_value: int, max_value: int, default_value: int, step_size: int, on_click: Function) => CommandRef | CommandUniqPtr
+	/** Your on_click function will be called with value and click_type. **/
+	click_slider_float: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, min_value: int, max_value: int, default_value: int, step_size: int, on_click: Function) => CommandRef | CommandUniqPtr
+	/** options must be table of list action item data or Label. List action item data is a table that contains at least a Label (menu_name), and can optionally have command_names and help_text. **/
+	list_select: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, options: any[], default_value: int, on_change: Function) => CommandRef | CommandUniqPtr
+	/** options must be table of list action item data or Label. List action item data is a table that contains at least a Label (menu_name), and can optionally have command_names and help_text. **/
+	list_action: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, options: any[], on_item_click: Function) => CommandRef | CommandUniqPtr
+	/** Your on_change function will be called with the string and click type. **/
+	text_input: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, on_change: Function, default_value: string) => CommandRef | CommandUniqPtr
+	/** Your on_change function will be called with a Colour as parameter. **/
+	colour: ColourMenu
+	/** Your on_change function will be called with a Colour as parameter. **/
+	/** Creates a rainbow slider for the given colour command. This should be called right after creating the colour command. **/
+	rainbow: (colour_command: CommandRef) => CommandRef | CommandUniqPtr
+	divider: (parent: CommandRef, menu_name: Label) => CommandRef | CommandUniqPtr
+	/** Pairs well with menu.on_tick_in_viewport and menu.set_value. **/
+	readonly: (parent: CommandRef, menu_name: Label, value: string) => CommandRef | CommandUniqPtr
+	hyperlink: (parent: CommandRef, menu_name: Label, link: string, help_text: Label) => CommandRef | CommandUniqPtr
+	/** We highly recommend using menu.list_action instead of this, unless the options are really unimportant. **/
+	action_slider: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, options: Label[], on_click: Function) => CommandRef | CommandUniqPtr
+	/** We highly recommend using menu.list_select instead of this, unless the options are really unimportant. **/
+	slider_text: (parent: CommandRef, menu_name: Label, command_names: string[], help_text: Label, options: Label[], on_click: Function) => CommandRef | CommandUniqPtr
 }
 
 

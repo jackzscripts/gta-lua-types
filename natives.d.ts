@@ -239,7 +239,7 @@ declare namespace AUDIO {
 	AUDIO::INTERRUPT_CONVERSATION_AND_PAUSE(NETWORK::NET_TO_PED(l_3989._f26F[0/ *1* /]), "CONV_INTERRUPT_QUIT_IT", "LESTER"); **/
 	function INTERRUPT_CONVERSATION_AND_PAUSE(ped: EntityHandle, p1: string, speaker: string): void
 	/**  **/
-	function GET_VARIATION_CHOSEN_FOR_SCRIPTED_LINE(p0: Address): any
+	function GET_VARIATION_CHOSEN_FOR_SCRIPTED_LINE(p0: Address): int
 	/**  **/
 	function SET_NO_DUCKING_FOR_CONVERSATION(p0: boolean): void
 	/** This native does absolutely nothing, just a nullsub **/
@@ -256,11 +256,11 @@ declare namespace AUDIO {
 	Full list of script audio bank names by DurtyFree https://github.com/DurtyFree/gta-v-data-dumps/blob/master/scriptAudioBankNames.json **/
 	function REQUEST_SCRIPT_AUDIO_BANK(p0: string, p1: boolean, p2: int): boolean
 	/**  **/
-	function HINT_MISSION_AUDIO_BANK(p0: any, p1: any, p2: any): any
+	function HINT_MISSION_AUDIO_BANK(p0: any, p1: any, p2: any): boolean
 	/**  **/
-	function HINT_AMBIENT_AUDIO_BANK(p0: any, p1: any, p2: any): any
+	function HINT_AMBIENT_AUDIO_BANK(p0: any, p1: any, p2: any): boolean
 	/**  **/
-	function HINT_SCRIPT_AUDIO_BANK(p0: any, p1: any, p2: any): any
+	function HINT_SCRIPT_AUDIO_BANK(p0: any, p1: any, p2: any): boolean
 	/**  **/
 	function RELEASE_MISSION_AUDIO_BANK(): void
 	/**  **/
@@ -461,7 +461,7 @@ declare namespace AUDIO {
 	/**  **/
 	function IS_ANY_SPEECH_PLAYING(ped: EntityHandle): boolean
 	/**  **/
-	function IS_ANY_POSITIONAL_SPEECH_PLAYING(): any
+	function IS_ANY_POSITIONAL_SPEECH_PLAYING(): boolean
 	/** Checks if the ped can play the speech or has the speech file, last parameter is usually false. **/
 	function DOES_CONTEXT_EXIST_FOR_THIS_PED(ped: EntityHandle, speechName: string, unk: boolean): boolean
 	/**  **/
@@ -850,7 +850,7 @@ declare namespace AUDIO {
 	/**  **/
 	function AUDIO_IS_MUSIC_PLAYING(): boolean
 	/** This is an alias of AUDIO_IS_MUSIC_PLAYING. **/
-	function AUDIO_IS_SCRIPTED_MUSIC_PLAYING(): any
+	function AUDIO_IS_SCRIPTED_MUSIC_PLAYING(): boolean
 	/** All music event names found in the b617d scripts: https://pastebin.com/GnYt0R3P
 	Full list of music event names by DurtyFree https://github.com/DurtyFree/gta-v-data-dumps/blob/master/musicEventNames.json **/
 	function PREPARE_MUSIC_EVENT(eventName: string): boolean
@@ -1076,7 +1076,7 @@ declare namespace AUDIO {
 	ID: 63 | Hash: 0xBFFDD2B7 **/
 	function SET_AUDIO_FLAG(flagName: string, toggle: boolean): void
 	/**  **/
-	function PREPARE_SYNCHRONIZED_AUDIO_EVENT(p0: string, p1: any): any
+	function PREPARE_SYNCHRONIZED_AUDIO_EVENT(p0: string, p1: any): boolean
 	/**  **/
 	function PREPARE_SYNCHRONIZED_AUDIO_EVENT_FOR_SCENE(p0: any, p1: Address): boolean
 	/**  **/
@@ -1298,7 +1298,7 @@ declare namespace CAM {
 	/** Only used in R* Script fm_mission_controller_2020 **/
 	function SET_USE_HI_DOF_ON_SYNCED_SCENE_THIS_UPDATE(): void
 	/**  **/
-	function SET_CAM_DOF_OVERRIDDEN_FOCUS_DISTANCE(p0: any, p1: float): void
+	function SET_CAM_DOF_OVERRIDDEN_FOCUS_DISTANCE(camera: CamHandle, p1: float): void
 	/**  **/
 	function SET_CAM_DOF_OVERRIDDEN_FOCUS_DISTANCE_BLEND_LEVEL(p0: any, p1: float): void
 	/** This native has its name defined inside its codE
@@ -1787,7 +1787,7 @@ declare namespace CAM {
 	/**  **/
 	function STOP_CODE_GAMEPLAY_HINT(p0: boolean): void
 	/**  **/
-	function IS_CODE_GAMEPLAY_HINT_ACTIVE(): any
+	function IS_CODE_GAMEPLAY_HINT_ACTIVE(): boolean
 	/**  **/
 	function SET_GAMEPLAY_HINT_FOV(FOV: float): void
 	/**  **/
@@ -1839,9 +1839,9 @@ declare namespace CAM {
 	/** Toggles the vehicle cinematic cam; requires the player ped to be in a vehicle to work. **/
 	function SET_CINEMATIC_MODE_ACTIVE(toggle: boolean): void
 	/**  **/
-	function IS_IN_VEHICLE_MOBILE_PHONE_CAMERA_RENDERING(): any
+	function IS_IN_VEHICLE_MOBILE_PHONE_CAMERA_RENDERING(): boolean
 	/**  **/
-	function DISABLE_CINEMATIC_SLOW_MO_THIS_UPDATE(): any
+	function DISABLE_CINEMATIC_SLOW_MO_THIS_UPDATE(): boolean
 	/**  **/
 	function IS_BONNET_CINEMATIC_CAM_RENDERING(): boolean
 	/** Tests some cinematic camera flags **/
@@ -1875,7 +1875,7 @@ declare namespace CAM {
 	/**  **/
 	function SET_FIRST_PERSON_FLASH_EFFECT_VEHICLE_MODEL_HASH(vehicleModel: Hash): void
 	/**  **/
-	function IS_ALLOWED_INDEPENDENT_CAMERA_MODES(): any
+	function IS_ALLOWED_INDEPENDENT_CAMERA_MODES(): boolean
 	/**  **/
 	function CAMERA_PREVENT_COLLISION_SETTINGS_FOR_TRIPLEHEAD_IN_INTERIORS_THIS_UPDATE(): void
 	/**  **/
@@ -2022,7 +2022,7 @@ declare namespace CUTSCENE {
 	/** This function is hard-coded to always return 1. **/
 	function IS_CUTSCENE_AUTHORIZED(cutsceneName: string): boolean
 	/**  **/
-	function DOES_CUTSCENE_HANDLE_EXIST(p0: any): any
+	function DOES_CUTSCENE_HANDLE_EXIST(p0: any): int
 	/**  **/
 	function REGISTER_ENTITY_FOR_CUTSCENE(cutscenePed: EntityHandle, cutsceneEntName: string, p2: int, modelHash: Hash, p4: int): void
 	/**  **/
@@ -2046,7 +2046,7 @@ declare namespace CUTSCENE {
 	/**  **/
 	function SET_CUTSCENE_MULTIHEAD_FADE_MANUAL(p0: boolean): void
 	/**  **/
-	function IS_MULTIHEAD_FADE_UP(): int
+	function IS_MULTIHEAD_FADE_UP(): boolean
 	/** Stops current cutscene with a fade transition
 	p0: always true in R* Scripts
 	You will need to manually fade the screen back in
@@ -2055,7 +2055,7 @@ declare namespace CUTSCENE {
 	/**  **/
 	function SET_CAR_GENERATORS_CAN_UPDATE_DURING_CUTSCENE(p0: boolean): void
 	/**  **/
-	function CAN_USE_MOBILE_PHONE_DURING_CUTSCENE(): any
+	function CAN_USE_MOBILE_PHONE_DURING_CUTSCENE(): boolean
 	/**  **/
 	function SET_CUTSCENE_CAN_BE_SKIPPED(p0: boolean): void
 	/**  **/
@@ -2129,7 +2129,7 @@ declare namespace DATAFILE {
 	/**  **/
 	function DATAFILE_FLUSH_MISSION_HEADER(): void
 	/**  **/
-	function DATAFILE_GET_FILE_DICT(p0: int): string
+	function DATAFILE_GET_FILE_DICT(p0: int): Address
 	/**  **/
 	function DATAFILE_START_SAVE_TO_CLOUD(filename: string, p1: any): boolean
 	/**  **/
@@ -2137,11 +2137,11 @@ declare namespace DATAFILE {
 	/**  **/
 	function DATAFILE_IS_SAVE_PENDING(): boolean
 	/**  **/
-	function DATAFILE_LOAD_OFFLINE_UGC_FOR_ADDITIONAL_DATA_FILE(p0: any, p1: any): any
+	function DATAFILE_LOAD_OFFLINE_UGC_FOR_ADDITIONAL_DATA_FILE(p0: any, p1: any): boolean
 	/**  **/
 	function DATAFILE_DELETE_FOR_ADDITIONAL_DATA_FILE(p0: any): void
 	/**  **/
-	function DATAFILE_GET_FILE_DICT_FOR_ADDITIONAL_DATA_FILE(p0: any): any
+	function DATAFILE_GET_FILE_DICT_FOR_ADDITIONAL_DATA_FILE(p0: any): Address
 	/**  **/
 	function DATADICT_SET_BOOL(objectData: Address, key: string, value: boolean): void
 	/**  **/
@@ -2254,7 +2254,7 @@ declare namespace DLC {
 	/** This function is hard-coded to always return 1. **/
 	function DLC_CHECK_CLOUD_DATA_CORRECT(): boolean
 	/** This function is hard-coded to always return 0. **/
-	function GET_EXTRACONTENT_CLOUD_RESULT(): boolean
+	function GET_EXTRACONTENT_CLOUD_RESULT(): int
 	/** This function is hard-coded to always return 1. **/
 	function DLC_CHECK_COMPAT_PACK_CONFIGURATION(): boolean
 	/**  **/
@@ -2312,7 +2312,7 @@ declare namespace ENTITY {
 	256 & 287 - in fm_mission_controller **/
 	function HAS_ENTITY_CLEAR_LOS_TO_ENTITY(entity1: EntityHandle, entity2: EntityHandle, traceType: int): boolean
 	/**  **/
-	function HAS_ENTITY_CLEAR_LOS_TO_ENTITY_ADJUST_FOR_COVER(entity1: EntityHandle, entity2: EntityHandle, traceType: int): any
+	function HAS_ENTITY_CLEAR_LOS_TO_ENTITY_ADJUST_FOR_COVER(entity1: EntityHandle, entity2: EntityHandle, traceType: int): boolean
 	/** Has the entity1 got a clear line of sight to the other entity2 from the direction entity1 is facing.
 	This is one of the most CPU demanding BOOL natives in the game; avoid calling this in things like nested for-loops **/
 	function HAS_ENTITY_CLEAR_LOS_TO_ENTITY_IN_FRONT(entity1: EntityHandle, entity2: EntityHandle): boolean
@@ -2700,7 +2700,7 @@ declare namespace ENTITY {
 	/** Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json
 	
 	RAGEPluginHook list: docs.ragepluginhook.net/html/62951c37-a440-478c-b389-c471230ddfc5.htm **/
-	function STOP_ENTITY_ANIM(entity: EntityHandle, animation: string, animGroup: string, p3: float): any
+	function STOP_ENTITY_ANIM(entity: EntityHandle, animation: string, animGroup: string, p3: float): boolean
 	/** p1 sync task id? **/
 	function STOP_SYNCHRONIZED_ENTITY_ANIM(entity: EntityHandle, p1: float, p2: boolean): boolean
 	/** if (ENTITY::HAS_ANIM_EVENT_FIRED(PLAYER::PLAYER_PED_ID(), MISC::GET_HASH_KEY("CreateObject"))) **/
@@ -2901,7 +2901,7 @@ declare namespace ENTITY {
 	/**  **/
 	function CREATE_FORCED_OBJECT(x: float, y: float, z: float, p3: any, modelHash: Hash, p5: boolean): void
 	/**  **/
-	function REMOVE_FORCED_OBJECT(p0: any, p1: any, p2: any, p3: any, p4: any): void
+	function REMOVE_FORCED_OBJECT(x: float, y: float, z: float, p3: float, modelHash: Hash): void
 	/** Calling this function disables collision between two entities.
 	The importance of the order for entity1 and entity2 is unclear.
 	The third parameter, `thisFrame`, decides whether the collision is to be disabled until it is turned back on, or if it's just this frame. **/
@@ -2962,9 +2962,9 @@ declare namespace EVENT {
 	/** eventType: https://alloc8or.re/gta5/doc/enums/eEventType.txt **/
 	function UNBLOCK_DECISION_MAKER_EVENT(name: Hash, eventType: int): void
 	/** eventType: https://alloc8or.re/gta5/doc/enums/eEventType.txt **/
-	function ADD_SHOCKING_EVENT_AT_POSITION(eventType: int, x: float, y: float, z: float, duration: float): ScriptHandle
+	function ADD_SHOCKING_EVENT_AT_POSITION(eventType: int, x: float, y: float, z: float, duration: float): int
 	/** eventType: https://alloc8or.re/gta5/doc/enums/eEventType.txt **/
-	function ADD_SHOCKING_EVENT_FOR_ENTITY(eventType: int, entity: EntityHandle, duration: float): ScriptHandle
+	function ADD_SHOCKING_EVENT_FOR_ENTITY(eventType: int, entity: EntityHandle, duration: float): int
 	/** eventType: https://alloc8or.re/gta5/doc/enums/eEventType.txt **/
 	function IS_SHOCKING_EVENT_IN_SPHERE(eventType: int, x: float, y: float, z: float, radius: float): boolean
 	/**  **/
@@ -3342,9 +3342,9 @@ declare namespace GRAPHICS {
 	/**  **/
 	function SET_DEPTHWRITING(p0: any): void
 	/**  **/
-	function BEGIN_TAKE_MISSION_CREATOR_PHOTO(): any
+	function BEGIN_TAKE_MISSION_CREATOR_PHOTO(): boolean
 	/**  **/
-	function GET_STATUS_OF_TAKE_MISSION_CREATOR_PHOTO(): any
+	function GET_STATUS_OF_TAKE_MISSION_CREATOR_PHOTO(): int
 	/**  **/
 	function FREE_MEMORY_FOR_MISSION_CREATOR_PHOTO(): void
 	/**  **/
@@ -3352,9 +3352,9 @@ declare namespace GRAPHICS {
 	/**  **/
 	function GET_STATUS_OF_LOAD_MISSION_CREATOR_PHOTO(p0: Address): int
 	/**  **/
-	function BEGIN_CREATE_MISSION_CREATOR_PHOTO_PREVIEW(): any
+	function BEGIN_CREATE_MISSION_CREATOR_PHOTO_PREVIEW(): boolean
 	/**  **/
-	function GET_STATUS_OF_CREATE_MISSION_CREATOR_PHOTO_PREVIEW(): any
+	function GET_STATUS_OF_CREATE_MISSION_CREATOR_PHOTO_PREVIEW(): int
 	/**  **/
 	function FREE_MEMORY_FOR_MISSION_CREATOR_PHOTO_PREVIEW(): void
 	/**  **/
@@ -3389,16 +3389,16 @@ declare namespace GRAPHICS {
 	/**  **/
 	function GET_CURRENT_NUMBER_OF_CLOUD_PHOTOS(): int
 	/** 2 matches across 2 scripts. Only showed in appcamera & appmedia. Both were 0. **/
-	function QUEUE_OPERATION_TO_CREATE_SORTED_LIST_OF_PHOTOS(p0: any): any
+	function QUEUE_OPERATION_TO_CREATE_SORTED_LIST_OF_PHOTOS(p0: any): boolean
 	/** 3 matches across 3 scripts. First 2 were 0, 3rd was 1. Possibly a bool.
 	appcamera, appmedia, and cellphone_controller. **/
-	function GET_STATUS_OF_SORTED_LIST_OPERATION(p0: any): any
+	function GET_STATUS_OF_SORTED_LIST_OPERATION(p0: any): int
 	/**  **/
 	function CLEAR_STATUS_OF_SORTED_LIST_OPERATION(): void
 	/** This function is hard-coded to always return 0. **/
-	function DOES_THIS_PHOTO_SLOT_CONTAIN_A_VALID_PHOTO(p0: any): any
+	function DOES_THIS_PHOTO_SLOT_CONTAIN_A_VALID_PHOTO(p0: any): boolean
 	/** This function is hard-coded to always return 0. **/
-	function LOAD_HIGH_QUALITY_PHOTO(p0: any): any
+	function LOAD_HIGH_QUALITY_PHOTO(p0: any): boolean
 	/** Hardcoded to always return 2. **/
 	function GET_LOAD_HIGH_QUALITY_PHOTO_STATUS(p0: int): int
 	/**  **/
@@ -3432,7 +3432,7 @@ declare namespace GRAPHICS {
 	/**  **/
 	function SET_LIGHT_OVERRIDE_MAX_INTENSITY_SCALE(p0: any): void
 	/**  **/
-	function GET_LIGHT_OVERRIDE_MAX_INTENSITY_SCALE(): any
+	function GET_LIGHT_OVERRIDE_MAX_INTENSITY_SCALE(): float
 	/** enum MarkerTypes
 	{
 	    MarkerTypeUpsideDownCone = 0,
@@ -3683,7 +3683,7 @@ declare namespace GRAPHICS {
 	GRAPHICS::ADD_ENTITY_ICON(a_0, "MP_Arrow");
 	
 	I tried this and nothing happened... **/
-	function ADD_ENTITY_ICON(entity: EntityHandle, icon: string): any
+	function ADD_ENTITY_ICON(entity: EntityHandle, icon: string): int
 	/**  **/
 	function SET_ENTITY_ICON_VISIBILITY(entity: EntityHandle, toggle: boolean): void
 	/**  **/
@@ -3739,7 +3739,7 @@ declare namespace GRAPHICS {
 	/**  **/
 	function RELEASE_MOVIE_MESH_SET(movieMeshSet: int): void
 	/**  **/
-	function QUERY_MOVIE_MESH_SET_STATE(p0: any): any
+	function QUERY_MOVIE_MESH_SET_STATE(p0: any): int
 	/** int screenresx,screenresy;
 	GET_SCREEN_RESOLUTION(&screenresx,&screenresy); **/
 	function GET_SCREEN_RESOLUTION(x: IntPointer, y: IntPointer): void
@@ -3748,7 +3748,7 @@ declare namespace GRAPHICS {
 	/**  **/
 	function GET_ASPECT_RATIO(b: boolean): float
 	/**  **/
-	function GET_SCREEN_ASPECT_RATIO(): any
+	function GET_SCREEN_ASPECT_RATIO(): float
 	/** Setting Aspect Ratio Manually in game will return:
 	
 	false - for Narrow format Aspect Ratios (3:2, 4:3, 5:4, etc. )
@@ -3849,15 +3849,15 @@ declare namespace GRAPHICS {
 	/**  **/
 	function DESTROY_TRACKED_POINT(point: int): void
 	/** This function is hard-coded to always return 0. **/
-	function SET_GRASS_CULL_SPHERE(p0: any, p1: any, p2: any, p3: any): any
+	function SET_GRASS_CULL_SPHERE(p0: any, p1: any, p2: any, p3: any): int
 	/** This native does absolutely nothing, just a nullsub **/
 	function REMOVE_GRASS_CULL_SPHERE(p0: any): void
 	/**  **/
-	function PROCGRASS_ENABLE_CULLSPHERE(p0: any, p1: float, p2: float, p3: float, p4: float): void
+	function PROCGRASS_ENABLE_CULLSPHERE(p0: int, p1: float, p2: float, p3: float, p4: float): void
 	/**  **/
 	function PROCGRASS_DISABLE_CULLSPHERE(p0: any): void
 	/**  **/
-	function PROCGRASS_IS_CULLSPHERE_ENABLED(p0: any): any
+	function PROCGRASS_IS_CULLSPHERE_ENABLED(p0: any): boolean
 	/**  **/
 	function PROCGRASS_ENABLE_AMBSCALESCAN(): void
 	/**  **/
@@ -4018,7 +4018,7 @@ declare namespace GRAPHICS {
 	/**  **/
 	function PHONEPHOTOEDITOR_TOGGLE(p0: boolean): boolean
 	/**  **/
-	function PHONEPHOTOEDITOR_IS_ACTIVE(): any
+	function PHONEPHOTOEDITOR_IS_ACTIVE(): boolean
 	/**  **/
 	function PHONEPHOTOEDITOR_SET_FRAME_TXD(textureDict: string, p1: boolean): boolean
 	/** GRAPHICS::START_PARTICLE_FX_NON_LOOPED_AT_COORD("scr_paleto_roof_impact", -140.8576f, 6420.789f, 41.1391f, 0f, 0f, 267.3957f, 0x3F800000, 0, 0, 0);
@@ -4045,7 +4045,7 @@ declare namespace GRAPHICS {
 	
 	example:
 	Function.Call<int>(Hash.START_PARTICLE_FX_NON_LOOPED_AT_COORD, "scr_fbi4_trucks_crash", GTA.Game.Player.Character.Position.X, GTA.Game.Player.Character.Position.Y, GTA.Game.Player.Character.Position.Z + 4f, 0, 0, 0, 5.5f, 0, 0, 0); **/
-	function START_PARTICLE_FX_NON_LOOPED_AT_COORD(effectName: string, xPos: float, yPos: float, zPos: float, xRot: float, yRot: float, zRot: float, scale: float, xAxis: boolean, yAxis: boolean, zAxis: boolean): int
+	function START_PARTICLE_FX_NON_LOOPED_AT_COORD(effectName: string, xPos: float, yPos: float, zPos: float, xRot: float, yRot: float, zRot: float, scale: float, xAxis: boolean, yAxis: boolean, zAxis: boolean): boolean
 	/** Full list of particle effect dictionaries and effects by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/particleEffectsCompact.json **/
 	function START_NETWORKED_PARTICLE_FX_NON_LOOPED_AT_COORD(effectName: string, xPos: float, yPos: float, zPos: float, xRot: float, yRot: float, zRot: float, scale: float, xAxis: boolean, yAxis: boolean, zAxis: boolean, p11: boolean): boolean
 	/** GRAPHICS::START_PARTICLE_FX_NON_LOOPED_ON_PED_BONE("scr_sh_bong_smoke", PLAYER::PLAYER_PED_ID(), -0.025f, 0.13f, 0f, 0f, 0f, 0f, 31086, 0x3F800000, 0, 0, 0);
@@ -4161,7 +4161,7 @@ declare namespace GRAPHICS {
 	/** Full list of particle effect dictionaries and effects by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/particleEffectsCompact.json **/
 	function SET_PARTICLE_FX_FOOT_OVERRIDE_NAME(p0: string): void
 	/**  **/
-	function SET_SKIDMARK_RANGE_SCALE(p0: any): void
+	function SET_SKIDMARK_RANGE_SCALE(scale: float): void
 	/**  **/
 	function SET_PTFX_FORCE_VEHICLE_INTERIOR_FLAG(p0: any): void
 	/**  **/
@@ -4293,7 +4293,7 @@ declare namespace GRAPHICS {
 	/** boneIndex is always chassis_dummy in the scripts. The x/y/z params are location relative to the chassis bone. **/
 	function ADD_VEHICLE_CREW_EMBLEM(vehicle: EntityHandle, ped: EntityHandle, boneIndex: int, x1: float, x2: float, x3: float, y1: float, y2: float, y3: float, z1: float, z2: float, z3: float, scale: float, p13: any, alpha: int): boolean
 	/**  **/
-	function ABORT_VEHICLE_CREW_EMBLEM_REQUEST(p0: any): any
+	function ABORT_VEHICLE_CREW_EMBLEM_REQUEST(p0: any): boolean
 	/**  **/
 	function REMOVE_VEHICLE_CREW_EMBLEM(vehicle: EntityHandle, p1: int): void
 	/**  **/
@@ -4352,7 +4352,7 @@ declare namespace GRAPHICS {
 	/**  **/
 	function GET_TIMECYCLE_TRANSITION_MODIFIER_INDEX(): int
 	/**  **/
-	function GET_IS_TIMECYCLE_TRANSITIONING_OUT(): any
+	function GET_IS_TIMECYCLE_TRANSITIONING_OUT(): boolean
 	/**  **/
 	function PUSH_TIMECYCLE_MODIFIER(): void
 	/**  **/
@@ -4473,7 +4473,7 @@ declare namespace GRAPHICS {
 	/** Pops and calls the Scaleform function on the stack **/
 	function END_SCALEFORM_MOVIE_METHOD(): void
 	/**  **/
-	function END_SCALEFORM_MOVIE_METHOD_RETURN_VALUE(): any
+	function END_SCALEFORM_MOVIE_METHOD_RETURN_VALUE(): int
 	/** methodReturn: The return value of this native: END_SCALEFORM_MOVIE_METHOD_RETURN_VALUE
 	Returns true if the return value of a scaleform function is ready to be collected (using GET_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_STRING or GET_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_INT). **/
 	function IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(methodReturn: int): boolean
@@ -4925,11 +4925,11 @@ declare namespace HUD {
 	/**  **/
 	function END_TEXT_COMMAND_THEFEED_POST_CREWTAG_WITH_GAME_NAME(p0: boolean, p1: boolean, p2: IntPointer, p3: int, isLeader: boolean, unk0: boolean, clanDesc: int, playerName: string, R: int, G: int, B: int): int
 	/**  **/
-	function END_TEXT_COMMAND_THEFEED_POST_UNLOCK(p0: any, p1: any, p2: any): any
+	function END_TEXT_COMMAND_THEFEED_POST_UNLOCK(p0: any, p1: any, p2: any): int
 	/**  **/
-	function END_TEXT_COMMAND_THEFEED_POST_UNLOCK_TU(p0: any, p1: any, p2: any, p3: any): any
+	function END_TEXT_COMMAND_THEFEED_POST_UNLOCK_TU(p0: any, p1: any, p2: any, p3: any): int
 	/**  **/
-	function END_TEXT_COMMAND_THEFEED_POST_UNLOCK_TU_WITH_COLOR(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): any
+	function END_TEXT_COMMAND_THEFEED_POST_UNLOCK_TU_WITH_COLOR(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): int
 	/**  **/
 	function END_TEXT_COMMAND_THEFEED_POST_MPTICKER(blink: boolean, p1: boolean): int
 	/**  **/
@@ -5604,7 +5604,7 @@ declare namespace HUD {
 	function CLEAR_FAKE_CONE_ARRAY(): void
 	/** This native is used to colorize certain map components like the army base at the top of the map.
 	p2 appears to be always -1. If p2 is -1 then native wouldn't change the color. See https://gfycat.com/SkinnyPinkChupacabra **/
-	function SET_MINIMAP_COMPONENT(componentId: int, toggle: boolean, overrideColor: int): any
+	function SET_MINIMAP_COMPONENT(componentId: int, toggle: boolean, overrideColor: int): boolean
 	/**  **/
 	function SET_MINIMAP_SONAR_SWEEP(toggle: boolean): void
 	/**  **/
@@ -5770,7 +5770,7 @@ declare namespace HUD {
 	/**  **/
 	function SET_MISSION_NAME_FOR_UGC_MISSION(p0: boolean, name: string): void
 	/**  **/
-	function SET_DESCRIPTION_FOR_UGC_MISSION_EIGHT_STRINGS(p0: boolean, p1: Address, p2: Address, p3: Address, p4: Address, p5: Address, p6: Address, p7: Address, p8: Address): void
+	function SET_DESCRIPTION_FOR_UGC_MISSION_EIGHT_STRINGS(p0: boolean, p1: string, p2: string, p3: string, p4: string, p5: string, p6: string, p7: string, p8: string): void
 	/**  **/
 	function SET_MINIMAP_BLOCK_WAYPOINT(toggle: boolean): void
 	/** Toggles the North Yankton map **/
@@ -5917,7 +5917,7 @@ declare namespace HUD {
 	/** This native does absolutely nothing, just a nullsub **/
 	function CLEAR_REMINDER_MESSAGE(): void
 	/** World to relative screen coords, this world to screen will keep the text on screen. Was named _GET_SCREEN_COORD_FROM_WORLD_COORD, but this conflicts with 0x34E82F05DF2974F5. As that hash actually matches GET_SCREEN_COORD_FROM_WORLD_COORD that one supercedes and this one was renamed to _GET_2D_COORD_FROM_3D_COORD **/
-	function GET_HUD_SCREEN_POSITION_FROM_WORLD_POSITION(worldX: float, worldY: float, worldZ: float, screenX: FloatPointer, screenY: FloatPointer): boolean
+	function GET_HUD_SCREEN_POSITION_FROM_WORLD_POSITION(worldX: float, worldY: float, worldZ: float, screenX: FloatPointer, screenY: FloatPointer): int
 	/** Shows a menu for reporting UGC content. **/
 	function OPEN_REPORTUGC_MENU(): void
 	/**  **/
@@ -6136,11 +6136,11 @@ declare namespace HUD {
 	/** Sets the sprite of the next BLIP_GALLERY blip, values used in the native scripts: 143 (ObjectiveBlue), 144 (ObjectiveGreen), 145 (ObjectiveRed), 146 (ObjectiveYellow). **/
 	function CUSTOM_MINIMAP_SET_BLIP_OBJECT(spriteId: int): void
 	/** Add a BLIP_GALLERY at the specific coordinate. Used in fm_maintain_transition_players to display race track points. **/
-	function CUSTOM_MINIMAP_CREATE_BLIP(x: float, y: float, z: float): any
+	function CUSTOM_MINIMAP_CREATE_BLIP(x: float, y: float, z: float): int
 	/**  **/
 	function CUSTOM_MINIMAP_CLEAR_BLIPS(): void
 	/** Doesn't actually return anything. **/
-	function FORCE_SONAR_BLIPS_THIS_FRAME(): any
+	function FORCE_SONAR_BLIPS_THIS_FRAME(): boolean
 	/**  **/
 	function GET_NORTH_BLID_INDEX(): Blip
 	/** Toggles whether or not name labels are shown on the expanded minimap next to player blips, like in GTA:O.
@@ -6483,7 +6483,7 @@ declare namespace INTERIOR {
 	function IS_INTERIOR_READY(interior: Interior): boolean
 	/** Only used once in the entire game scripts.
 	Does not actually return anything. **/
-	function SET_INTERIOR_IN_USE(interior: Interior): any
+	function SET_INTERIOR_IN_USE(interior: Interior): boolean
 	/** Returns the interior ID representing the requested interior at that location (if found?). The supplied interior string is not the same as the one used to load the interior.
 	
 	Use: INTERIOR::UNPIN_INTERIOR(INTERIOR::GET_INTERIOR_AT_COORDS_WITH_TYPE(x, y, z, interior))
@@ -6499,7 +6499,7 @@ declare namespace INTERIOR {
 	/** Returns true if the collision at the specified coords is marked as being outside (false if there's an interior) **/
 	function IS_COLLISION_MARKED_OUTSIDE(x: float, y: float, z: float): boolean
 	/**  **/
-	function GET_INTERIOR_FROM_COLLISION(x: float, y: float, z: float): int
+	function GET_INTERIOR_FROM_COLLISION(x: float, y: float, z: float): Interior
 	/**  **/
 	function ENABLE_STADIUM_PROBES_THIS_FRAME(p0: any): void
 	/** More info: http://gtaforums.com/topic/836367-adding-props-to-interiors/
@@ -6562,7 +6562,7 @@ declare namespace ITEMSET {
 /** @noSelf **/
 declare namespace LOADINGSCREEN {
 	/** This function is hard-coded to always return 0. **/
-	function LOBBY_AUTO_MULTIPLAYER_MENU(): int
+	function LOBBY_AUTO_MULTIPLAYER_MENU(): boolean
 	/**  **/
 	function LOBBY_AUTO_MULTIPLAYER_FREEMODE(): boolean
 	/**  **/
@@ -6914,7 +6914,7 @@ declare namespace MISC {
 	/**  **/
 	function GET_LINE_PLANE_INTERSECTION(p0: float, p1: float, p2: float, p3: float, p4: float, p5: float, p6: float, p7: float, p8: float, p9: float, p10: float, p11: float, p12: FloatPointer): boolean
 	/**  **/
-	function GET_POINT_AREA_OVERLAP(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any, p8: any, p9: any, p10: any, p11: any, p12: any, p13: any): any
+	function GET_POINT_AREA_OVERLAP(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any, p8: any, p9: any, p10: any, p11: any, p12: any, p13: any): boolean
 	/** This sets bit [offset] of [address] to on.
 	
 	The offsets used are different bits to be toggled on and off, typically there is only one address used in a script.
@@ -6942,7 +6942,7 @@ declare namespace MISC {
 	/**  **/
 	function IS_AREA_OCCUPIED(p0: float, p1: float, p2: float, p3: float, p4: float, p5: float, p6: boolean, p7: boolean, p8: boolean, p9: boolean, p10: boolean, p11: any, p12: boolean): boolean
 	/**  **/
-	function IS_AREA_OCCUPIED_SLOW(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any, p8: any, p9: any, p10: any, p11: any, p12: any): any
+	function IS_AREA_OCCUPIED_SLOW(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any, p8: any, p9: any, p10: any, p11: any, p12: any): boolean
 	/** `range`: The range, seems to not be very accurate during testing.
 	`p4`: Unknown, when set to true it seems to always return true no matter what I try.
 	`checkVehicle`: Check for any vehicles in that area.
@@ -6994,7 +6994,7 @@ declare namespace MISC {
 	/** The game by default has 5 hospital respawn points. Disabling them all will cause the player to respawn at the last position they were. **/
 	function DISABLE_HOSPITAL_RESTART(hospitalIndex: int, toggle: boolean): void
 	/**  **/
-	function ADD_POLICE_RESTART(p0: float, p1: float, p2: float, p3: float, p4: any): any
+	function ADD_POLICE_RESTART(p0: float, p1: float, p2: float, p3: float, p4: any): int
 	/** Disables the spawn point at the police house on the specified index.
 	
 	policeIndex: The police house index.
@@ -7019,7 +7019,7 @@ declare namespace MISC {
 	/**  **/
 	function SET_FADE_IN_AFTER_LOAD(toggle: boolean): void
 	/**  **/
-	function REGISTER_SAVE_HOUSE(p0: float, p1: float, p2: float, p3: float, p4: Address, p5: any, p6: any): any
+	function REGISTER_SAVE_HOUSE(p0: float, p1: float, p2: float, p3: float, p4: Address, p5: any, p6: any): int
 	/**  **/
 	function SET_SAVE_HOUSE(p0: any, p1: boolean, p2: boolean): void
 	/**  **/
@@ -7043,9 +7043,9 @@ declare namespace MISC {
 	/**  **/
 	function END_REPLAY_STATS(): void
 	/**  **/
-	function HAVE_REPLAY_STATS_BEEN_STORED(): any
+	function HAVE_REPLAY_STATS_BEEN_STORED(): boolean
 	/**  **/
-	function GET_REPLAY_STAT_MISSION_ID(): any
+	function GET_REPLAY_STAT_MISSION_ID(): int
 	/**  **/
 	function GET_REPLAY_STAT_MISSION_TYPE(): int
 	/**  **/
@@ -7060,7 +7060,7 @@ declare namespace MISC {
 	Returns 1 if the message isn't currently on screen **/
 	function QUEUE_MISSION_REPEAT_SAVE(): boolean
 	/**  **/
-	function QUEUE_MISSION_REPEAT_SAVE_FOR_BENCHMARK_TEST(): any
+	function QUEUE_MISSION_REPEAT_SAVE_FOR_BENCHMARK_TEST(): boolean
 	/**  **/
 	function GET_STATUS_OF_MISSION_REPEAT_SAVE(): int
 	/**  **/
@@ -7443,11 +7443,11 @@ declare namespace MISC {
 	function SET_DISPATCH_TIME_BETWEEN_SPAWN_ATTEMPTS_MULTIPLIER(p0: any, p1: float): void
 	/** To remove, see: REMOVE_DISPATCH_SPAWN_BLOCKING_AREA
 	See IS_POINT_IN_ANGLED_AREA for the definition of an angled area. **/
-	function ADD_DISPATCH_SPAWN_ANGLED_BLOCKING_AREA(x1: float, y1: float, z1: float, x2: float, y2: float, z2: float, width: float): any
+	function ADD_DISPATCH_SPAWN_ANGLED_BLOCKING_AREA(x1: float, y1: float, z1: float, x2: float, y2: float, z2: float, width: float): int
 	/**  **/
-	function ADD_DISPATCH_SPAWN_SPHERE_BLOCKING_AREA(x1: float, y1: float, x2: float, y2: float): any
+	function ADD_DISPATCH_SPAWN_SPHERE_BLOCKING_AREA(x1: float, y1: float, x2: float, y2: float): int
 	/**  **/
-	function REMOVE_DISPATCH_SPAWN_BLOCKING_AREA(p0: any): void
+	function REMOVE_DISPATCH_SPAWN_BLOCKING_AREA(p0: int): void
 	/**  **/
 	function RESET_DISPATCH_SPAWN_BLOCKING_AREAS(): void
 	/**  **/
@@ -7598,7 +7598,7 @@ declare namespace MISC {
 	/** Does nothing (it's a nullsub). **/
 	function DISABLE_SCREEN_DIMMING_THIS_FRAME(): void
 	/**  **/
-	function GET_CITY_DENSITY(): any
+	function GET_CITY_DENSITY(): float
 	/**  **/
 	function USE_ACTIVE_CAMERA_FOR_TIMESLICING_CENTRE(): void
 	/**  **/
@@ -8398,11 +8398,11 @@ declare namespace NETSHOPPING {
 	/**  **/
 	function NET_GAMESERVER_GET_CATALOG_CLOUD_CRC(): Hash
 	/**  **/
-	function NET_GAMESERVER_REFRESH_SERVER_CATALOG(): any
+	function NET_GAMESERVER_REFRESH_SERVER_CATALOG(): boolean
 	/**  **/
 	function NET_GAMESERVER_RETRIEVE_CATALOG_REFRESH_STATUS(state: IntPointer): boolean
 	/**  **/
-	function NET_GAMESERVER_INIT_SESSION(): any
+	function NET_GAMESERVER_INIT_SESSION(): boolean
 	/**  **/
 	function NET_GAMESERVER_RETRIEVE_INIT_SESSION_STATUS(p0: IntPointer): boolean
 	/**  **/
@@ -8416,7 +8416,7 @@ declare namespace NETSHOPPING {
 	/**  **/
 	function NET_GAMESERVER_IS_SESSION_VALID(charSlot: int): boolean
 	/**  **/
-	function NET_GAMESERVER_CLEAR_SESSION(p0: int): int
+	function NET_GAMESERVER_CLEAR_SESSION(p0: int): boolean
 	/**  **/
 	function NET_GAMESERVER_SESSION_APPLY_RECEIVED_DATA(charSlot: int): boolean
 	/**  **/
@@ -8485,7 +8485,7 @@ declare namespace NETWORK {
 	/** This function is hard-coded to always return 1. **/
 	function NETWORK_IS_NP_AVAILABLE(): boolean
 	/** This function is hard-coded to always return 1. **/
-	function NETWORK_IS_NP_PENDING(): any
+	function NETWORK_IS_NP_PENDING(): boolean
 	/** Hardcoded to return zero.
 	
 	==== PS4 specific info ====
@@ -8502,9 +8502,9 @@ declare namespace NETWORK {
 	================================= **/
 	function NETWORK_GET_NP_UNAVAILABLE_REASON(): int
 	/** This function is hard-coded to always return 1. **/
-	function NETWORK_IS_CONNETED_TO_NP_PRESENCE(): any
+	function NETWORK_IS_CONNETED_TO_NP_PRESENCE(): boolean
 	/** This function is hard-coded to always return 0. **/
-	function NETWORK_IS_LOGGED_IN_TO_PSN(): any
+	function NETWORK_IS_LOGGED_IN_TO_PSN(): boolean
 	/** Returns whether the signed-in user has valid Rockstar Online Services (ROS) credentials. **/
 	function NETWORK_HAS_VALID_ROS_CREDENTIALS(): boolean
 	/**  **/
@@ -8536,17 +8536,17 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_CHECK_COMMUNICATION_PRIVILEGES(p0: int, p1: int, p2: boolean): boolean
 	/**  **/
-	function NETWORK_CHECK_TEXT_COMMUNICATION_PRIVILEGES(p0: any, p1: any, p2: any): any
+	function NETWORK_CHECK_TEXT_COMMUNICATION_PRIVILEGES(p0: any, p1: any, p2: any): boolean
 	/**  **/
-	function NETWORK_IS_USING_ONLINE_PROMOTION(): any
+	function NETWORK_IS_USING_ONLINE_PROMOTION(): boolean
 	/**  **/
-	function NETWORK_SHOULD_SHOW_PROMOTION_ALERT_SCREEN(): any
+	function NETWORK_SHOULD_SHOW_PROMOTION_ALERT_SCREEN(): boolean
 	/**  **/
 	function NETWORK_HAS_SOCIAL_NETWORKING_SHARING_PRIV(): boolean
 	/**  **/
 	function NETWORK_GET_AGE_GROUP(): int
 	/**  **/
-	function NETWORK_CHECK_PRIVILEGES(p0: any, p1: any, p2: any): any
+	function NETWORK_CHECK_PRIVILEGES(p0: any, p1: any, p2: any): boolean
 	/** Hardcoded to return false. **/
 	function NETWORK_IS_PRIVILEGE_CHECK_IN_PROGRESS(): boolean
 	/**  **/
@@ -8556,13 +8556,13 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_HAVE_PLATFORM_SUBSCRIPTION(): boolean
 	/**  **/
-	function NETWORK_IS_PLATFORM_SUBSCRIPTION_CHECK_PENDING(): any
+	function NETWORK_IS_PLATFORM_SUBSCRIPTION_CHECK_PENDING(): boolean
 	/**  **/
 	function NETWORK_SHOW_ACCOUNT_UPGRADE_UI(): void
 	/**  **/
 	function NETWORK_IS_SHOWING_SYSTEM_UI_OR_RECENTLY_REQUESTED_UPSELL(): boolean
 	/**  **/
-	function NETWORK_NEED_TO_START_NEW_GAME_BUT_BLOCKED(): any
+	function NETWORK_NEED_TO_START_NEW_GAME_BUT_BLOCKED(): boolean
 	/**  **/
 	function NETWORK_CAN_BAIL(): boolean
 	/**  **/
@@ -8570,11 +8570,11 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_ON_RETURN_TO_SINGLE_PLAYER(): void
 	/**  **/
-	function NETWORK_TRANSITION_START(p0: any, p1: any, p2: any, p3: any): any
+	function NETWORK_TRANSITION_START(p0: int, p1: any, p2: any, p3: any): boolean
 	/**  **/
-	function NETWORK_TRANSITION_ADD_STAGE(hash: Hash, p1: int, p2: int, state: int, p4: int): void
+	function NETWORK_TRANSITION_ADD_STAGE(hash: Hash, p1: int, p2: int, state: int, p4: int): boolean
 	/**  **/
-	function NETWORK_TRANSITION_FINISH(p0: any, p1: any, p2: any): any
+	function NETWORK_TRANSITION_FINISH(p0: any, p1: any, p2: any): boolean
 	/** 11 - Need to download tunables.
 	12 - Need to download background script.
 	
@@ -8594,7 +8594,7 @@ declare namespace NETWORK {
 	p5 = 0 or 1. (1 if network_can_enter_multiplayer, but set to 0 if other checks after that are passed.)
 	p5 is reset to 0 if,
 	Global_1315318 = 0 or Global_1315323 = 9 or 12 or (Global_1312629 = 0 && Global_1312631 = true/1) those are passed. **/
-	function NETWORK_SESSION_DO_FREEROAM_QUICKMATCH(p0: any, p1: any, p2: any, maxPlayers: int, p4: any, p5: any): any
+	function NETWORK_SESSION_DO_FREEROAM_QUICKMATCH(p0: any, p1: any, p2: any, maxPlayers: int, p4: any, p5: any): boolean
 	/**  **/
 	function NETWORK_SESSION_DO_FRIEND_MATCHMAKING(p0: int, p1: int, maxPlayers: int, p3: boolean): boolean
 	/** p4 seems to be unused in 1.60/build 2628 **/
@@ -8621,13 +8621,13 @@ declare namespace NETWORK {
 	Results in: "Connection to session lost due to an unknown network error. Please return to Grand Theft Auto V and try again later." **/
 	function NETWORK_SESSION_END(p0: boolean, p1: boolean): boolean
 	/**  **/
-	function NETWORK_SESSION_LEAVE(p0: any): any
+	function NETWORK_SESSION_LEAVE(p0: any): boolean
 	/** Only works as host. **/
 	function NETWORK_SESSION_KICK_PLAYER(player: Player): void
 	/**  **/
 	function NETWORK_SESSION_GET_KICK_VOTE(player: Player): boolean
 	/**  **/
-	function NETWORK_SESSION_RESERVE_SLOTS_TRANSITION(p0: any, p1: any, p2: any): any
+	function NETWORK_SESSION_RESERVE_SLOTS_TRANSITION(p0: any, p1: any, p2: any): boolean
 	/**  **/
 	function NETWORK_JOIN_PREVIOUSLY_FAILED_SESSION(): boolean
 	/**  **/
@@ -8768,7 +8768,7 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_CAN_SESSION_END(): boolean
 	/**  **/
-	function NETWORK_GET_GAME_MODE(): any
+	function NETWORK_GET_GAME_MODE(): int
 	/**  **/
 	function NETWORK_SESSION_MARK_VISIBLE(toggle: boolean): void
 	/**  **/
@@ -8780,9 +8780,9 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_SESSION_GET_PRIVATE_SLOTS(): int
 	/**  **/
-	function NETWORK_SESSION_VOICE_HOST(): void
+	function NETWORK_SESSION_VOICE_HOST(): boolean
 	/**  **/
-	function NETWORK_SESSION_VOICE_LEAVE(): void
+	function NETWORK_SESSION_VOICE_LEAVE(): boolean
 	/**  **/
 	function NETWORK_SESSION_VOICE_CONNECT_TO_PLAYER(gamerHandle: Address): void
 	/**  **/
@@ -8792,7 +8792,7 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_SESSION_IS_IN_VOICE_SESSION(): boolean
 	/**  **/
-	function NETWORK_SESSION_IS_VOICE_SESSION_ACTIVE(): any
+	function NETWORK_SESSION_IS_VOICE_SESSION_ACTIVE(): boolean
 	/**  **/
 	function NETWORK_SESSION_IS_VOICE_SESSION_BUSY(): boolean
 	/** Message is limited to 64 characters. **/
@@ -8831,7 +8831,7 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_DO_TRANSITION_QUICKMATCH_WITH_GROUP(p0: any, p1: any, p2: any, p3: any, p4: Address, p5: any, p6: any, p7: any): boolean
 	/**  **/
-	function NETWORK_JOIN_GROUP_ACTIVITY(): any
+	function NETWORK_JOIN_GROUP_ACTIVITY(): boolean
 	/**  **/
 	function NETWORK_CLEAR_GROUP_ACTIVITY(): void
 	/**  **/
@@ -8956,7 +8956,7 @@ declare namespace NETWORK {
 	/** Contains the string "NETWORK_SEND_PRESENCE_TRANSITION_INVITE" but so does 0xC116FF9B4D488291; seems to fit alphabetically here, tho. **/
 	function NETWORK_SEND_IMPORTANT_TRANSITION_INVITE_VIA_PRESENCE(gamerHandle: Address, p1: string, p2: any, p3: any): boolean
 	/**  **/
-	function NETWORK_GET_PRESENCE_INVITE_INDEX_BY_ID(p0: any): any
+	function NETWORK_GET_PRESENCE_INVITE_INDEX_BY_ID(p0: any): int
 	/**  **/
 	function NETWORK_GET_NUM_PRESENCE_INVITES(): int
 	/**  **/
@@ -8964,19 +8964,19 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_REMOVE_PRESENCE_INVITE(p0: any): boolean
 	/**  **/
-	function NETWORK_GET_PRESENCE_INVITE_ID(p0: any): any
+	function NETWORK_GET_PRESENCE_INVITE_ID(p0: any): int
 	/**  **/
-	function NETWORK_GET_PRESENCE_INVITE_INVITER(p0: any): any
+	function NETWORK_GET_PRESENCE_INVITE_INVITER(p0: any): string
 	/**  **/
 	function NETWORK_GET_PRESENCE_INVITE_HANDLE(p0: any, p1: Address): boolean
 	/**  **/
-	function NETWORK_GET_PRESENCE_INVITE_SESSION_ID(p0: any): any
+	function NETWORK_GET_PRESENCE_INVITE_SESSION_ID(p0: any): int
 	/**  **/
-	function NETWORK_GET_PRESENCE_INVITE_CONTENT_ID(p0: any): any
+	function NETWORK_GET_PRESENCE_INVITE_CONTENT_ID(p0: any): string
 	/**  **/
-	function NETWORK_GET_PRESENCE_INVITE_PLAYLIST_LENGTH(p0: any): any
+	function NETWORK_GET_PRESENCE_INVITE_PLAYLIST_LENGTH(p0: any): int
 	/**  **/
-	function NETWORK_GET_PRESENCE_INVITE_PLAYLIST_CURRENT(p0: any): any
+	function NETWORK_GET_PRESENCE_INVITE_PLAYLIST_CURRENT(p0: any): int
 	/**  **/
 	function NETWORK_GET_PRESENCE_INVITE_FROM_ADMIN(p0: any): boolean
 	/**  **/
@@ -8984,9 +8984,9 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_HAS_FOLLOW_INVITE(): boolean
 	/**  **/
-	function NETWORK_ACTION_FOLLOW_INVITE(): any
+	function NETWORK_ACTION_FOLLOW_INVITE(): boolean
 	/**  **/
-	function NETWORK_CLEAR_FOLLOW_INVITE(): any
+	function NETWORK_CLEAR_FOLLOW_INVITE(): boolean
 	/**  **/
 	function NETWORK_REMOVE_AND_CANCEL_ALL_INVITES(): void
 	/**  **/
@@ -9002,7 +9002,7 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_HAS_MADE_INVITE_DECISION(gamerHandle: Address): boolean
 	/**  **/
-	function NETWORK_GET_INVITE_REPLY_STATUS(p0: any): any
+	function NETWORK_GET_INVITE_REPLY_STATUS(p0: any): int
 	/**  **/
 	function NETWORK_GET_CURRENTLY_SELECTED_GAMER_HANDLE_FROM_INVITE_MENU(p0: Address): boolean
 	/**  **/
@@ -9012,7 +9012,7 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_CHECK_DATA_MANAGER_SUCCEEDED_FOR_HANDLE(p0: any, p1: Address): boolean
 	/**  **/
-	function NETWORK_CHECK_DATA_MANAGER_FOR_HANDLE(p0: any, p1: any): any
+	function NETWORK_CHECK_DATA_MANAGER_FOR_HANDLE(p0: any, p1: any): boolean
 	/**  **/
 	function NETWORK_SET_INVITE_FAILED_MESSAGE_FOR_INVITE_MENU(p0: Address, p1: Address): void
 	/**  **/
@@ -9100,7 +9100,7 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_HAS_RECEIVED_HOST_BROADCAST_DATA(): boolean
 	/**  **/
-	function NETWORK_GET_PLAYER_INDEX(player: Player): int
+	function NETWORK_GET_PLAYER_INDEX(player: Player): Player
 	/**  **/
 	function NETWORK_GET_PARTICIPANT_INDEX(index: int): int
 	/** Returns the Player associated to a given Ped when in an online session. **/
@@ -9155,11 +9155,11 @@ declare namespace NETWORK {
 	This native is exactly the same as 'PARTICIPANT_ID' native. **/
 	function PARTICIPANT_ID_TO_INT(): int
 	/**  **/
-	function NETWORK_GET_KILLER_OF_PLAYER(player: Player, weaponHash: Address): any
+	function NETWORK_GET_KILLER_OF_PLAYER(player: Player, weaponHash: Address): Player
 	/**  **/
-	function NETWORK_GET_DESTROYER_OF_NETWORK_ID(netId: int, weaponHash: Address): int
+	function NETWORK_GET_DESTROYER_OF_NETWORK_ID(netId: int, weaponHash: Address): Player
 	/**  **/
-	function NETWORK_GET_DESTROYER_OF_ENTITY(entity: EntityHandle, weaponHash: Address): any
+	function NETWORK_GET_DESTROYER_OF_ENTITY(entity: EntityHandle, weaponHash: Address): Player
 	/** NETWORK_GET_ASSISTED_DAMAGE_OF_ENTITY that ensures the entity is dead (IS_ENTITY_DEAD) **/
 	function NETWORK_GET_ASSISTED_KILL_OF_ENTITY(player: Player, entity: EntityHandle, p2: IntPointer): boolean
 	/**  **/
@@ -9322,7 +9322,7 @@ declare namespace NETWORK {
 	But another p0 value may return an entity for player x, but not for player y (it'll just return -1 even if the entity exists on both clients).
 	
 	Returns an entity handle or -1, value changes based on p0's value. **/
-	function NETWORK_GET_ENTITY_FROM_OBJECT_ID(p0: any): int
+	function NETWORK_GET_ENTITY_FROM_OBJECT_ID(p0: any): EntityHandle
 	/**  **/
 	function NETWORK_IS_INACTIVE_PROFILE(p0: Address): boolean
 	/**  **/
@@ -9344,9 +9344,9 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_IS_FRIEND(gamerHandle: Address): boolean
 	/** This function is hard-coded to always return 0. **/
-	function NETWORK_IS_PENDING_FRIEND(p0: any): any
+	function NETWORK_IS_PENDING_FRIEND(p0: any): boolean
 	/**  **/
-	function NETWORK_IS_ADDING_FRIEND(): any
+	function NETWORK_IS_ADDING_FRIEND(): boolean
 	/**  **/
 	function NETWORK_ADD_FRIEND(gamerHandle: Address, message: string): boolean
 	/**  **/
@@ -9360,9 +9360,9 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_IGNORE_REMOTE_WAYPOINTS(): void
 	/**  **/
-	function NETWORK_SET_SCRIPT_AUTOMUTED(p0: any): any
+	function NETWORK_SET_SCRIPT_AUTOMUTED(p0: any): boolean
 	/**  **/
-	function NETWORK_HAS_AUTOMUTE_OVERRIDE(): any
+	function NETWORK_HAS_AUTOMUTE_OVERRIDE(): boolean
 	/**  **/
 	function NETWORK_HAS_HEADSET(): boolean
 	/**  **/
@@ -9428,7 +9428,7 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_SET_SCRIPT_CONTROLLING_TEAMS(p0: any): void
 	/**  **/
-	function NETWORK_SET_SAME_TEAM_AS_LOCAL_PLAYER(p0: any, p1: any): any
+	function NETWORK_SET_SAME_TEAM_AS_LOCAL_PLAYER(p0: any, p1: any): boolean
 	/**  **/
 	function NETWORK_OVERRIDE_TEAM_RESTRICTIONS(team: int, toggle: boolean): void
 	/**  **/
@@ -9484,7 +9484,7 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_SET_FRIENDLY_FIRE_OPTION(toggle: boolean): void
 	/** This native does absolutely nothing, just a nullsub **/
-	function NETWORK_SET_RICH_PRESENCE(p0: any, p1: any, p2: any, p3: any): void
+	function NETWORK_SET_RICH_PRESENCE(p0: int, p1: int, p2: any, p3: any): void
 	/** This native does absolutely nothing, just a nullsub **/
 	function NETWORK_SET_RICH_PRESENCE_STRING(p0: int, textLabel: string): void
 	/**  **/
@@ -9498,7 +9498,7 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_KEEP_ENTITY_COLLISION_DISABLED_AFTER_ANIM_SCENE(p0: any, p1: any): void
 	/**  **/
-	function NETWORK_IS_ANY_PLAYER_NEAR(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any): any
+	function NETWORK_IS_ANY_PLAYER_NEAR(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any): boolean
 	/**  **/
 	function NETWORK_CLAN_SERVICE_IS_VALID(): boolean
 	/**  **/
@@ -9552,15 +9552,15 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_CLAN_RELEASE_EMBLEM(p0: any): void
 	/**  **/
-	function NETWORK_GET_PRIMARY_CLAN_DATA_CLEAR(): any
+	function NETWORK_GET_PRIMARY_CLAN_DATA_CLEAR(): boolean
 	/**  **/
 	function NETWORK_GET_PRIMARY_CLAN_DATA_CANCEL(): void
 	/**  **/
 	function NETWORK_GET_PRIMARY_CLAN_DATA_START(p0: Address, p1: any): boolean
 	/**  **/
-	function NETWORK_GET_PRIMARY_CLAN_DATA_PENDING(): any
+	function NETWORK_GET_PRIMARY_CLAN_DATA_PENDING(): boolean
 	/**  **/
-	function NETWORK_GET_PRIMARY_CLAN_DATA_SUCCESS(): any
+	function NETWORK_GET_PRIMARY_CLAN_DATA_SUCCESS(): boolean
 	/**  **/
 	function NETWORK_GET_PRIMARY_CLAN_DATA_NEW(p0: Address, p1: Address): boolean
 	/** Whether or not another player is allowed to take control of the entity **/
@@ -9664,7 +9664,7 @@ declare namespace NETWORK {
 	/**  **/
 	function CAN_REGISTER_MISSION_PICKUPS(amount: int): boolean
 	/**  **/
-	function CAN_REGISTER_MISSION_DOORS(p0: any): any
+	function CAN_REGISTER_MISSION_DOORS(p0: any): boolean
 	/**  **/
 	function CAN_REGISTER_MISSION_ENTITIES(ped_amt: int, vehicle_amt: int, object_amt: int, pickup_amt: int): boolean
 	/** p0 appears to be for MP **/
@@ -9810,7 +9810,7 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_ALLOW_REMOTE_SYNCED_SCENE_LOCAL_PLAYER_REQUESTS(p0: any): void
 	/** p0 is always 0. p1 is pointing to a global. **/
-	function NETWORK_FIND_LARGEST_BUNCH_OF_PLAYERS(p0: int, p1: any): any
+	function NETWORK_FIND_LARGEST_BUNCH_OF_PLAYERS(p0: int, p1: any): boolean
 	/** One of the first things it does is get the players ped.
 	Then it calls a function that is used in some tasks and ped based functions.
 	p5, p6, p7 is another coordinate (or zero), often related to `GET_BLIP_COORDS, in the decompiled scripts. **/
@@ -9818,7 +9818,7 @@ declare namespace NETWORK {
 	/** p8, p9, p10 is another coordinate, or zero, often related to `GET_BLIP_COORDS in the decompiled scripts. **/
 	function NETWORK_START_RESPAWN_SEARCH_IN_ANGLED_AREA_FOR_PLAYER(player: Player, x1: float, y1: float, z1: float, x2: float, y2: float, z2: float, width: float, p8: float, p9: float, p10: float, flags: int): boolean
 	/**  **/
-	function NETWORK_QUERY_RESPAWN_RESULTS(p0: Address): any
+	function NETWORK_QUERY_RESPAWN_RESULTS(p0: Address): int
 	/**  **/
 	function NETWORK_CANCEL_RESPAWN_SEARCH(): void
 	/** Based on scripts such as in freemode.c how they call their vars vVar and fVar the 2nd and 3rd param it a Vector3 and Float, but the first is based on get_random_int_in_range.. **/
@@ -9861,14 +9861,14 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_IS_CLOCK_TIME_OVERRIDDEN(): boolean
 	/**  **/
-	function NETWORK_ADD_ENTITY_AREA(p0: float, p1: float, p2: float, p3: float, p4: float, p5: float): any
+	function NETWORK_ADD_ENTITY_AREA(p0: float, p1: float, p2: float, p3: float, p4: float, p5: float): int
 	/** To remove, see: NETWORK_REMOVE_ENTITY_AREA
 	See IS_POINT_IN_ANGLED_AREA for the definition of an angled area. **/
-	function NETWORK_ADD_ENTITY_ANGLED_AREA(x1: float, y1: float, z1: float, x2: float, y2: float, z2: float, width: float): any
+	function NETWORK_ADD_ENTITY_ANGLED_AREA(x1: float, y1: float, z1: float, x2: float, y2: float, z2: float, width: float): int
 	/**  **/
-	function NETWORK_ADD_CLIENT_ENTITY_AREA(p0: float, p1: float, p2: float, p3: float, p4: float, p5: float): any
+	function NETWORK_ADD_CLIENT_ENTITY_AREA(p0: float, p1: float, p2: float, p3: float, p4: float, p5: float): int
 	/**  **/
-	function NETWORK_ADD_CLIENT_ENTITY_ANGLED_AREA(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any): any
+	function NETWORK_ADD_CLIENT_ENTITY_ANGLED_AREA(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any): int
 	/**  **/
 	function NETWORK_REMOVE_ENTITY_AREA(p0: any): boolean
 	/**  **/
@@ -9965,7 +9965,7 @@ declare namespace NETWORK {
 	
 	Seems it's like ADD_EXPLOSION, etc. the first 2 params. The 3rd atm no need to worry since it always seems to be 0.
 	 **/
-	function NETWORK_EXPLODE_VEHICLE(vehicle: EntityHandle, isAudible: boolean, isInvisible: boolean, netId: int): void
+	function NETWORK_EXPLODE_VEHICLE(vehicle: EntityHandle, isAudible: boolean, isInvisible: boolean, netId: int): boolean
 	/**  **/
 	function NETWORK_EXPLODE_HELI(vehicle: EntityHandle, isAudible: boolean, isInvisible: boolean, netId: int): void
 	/**  **/
@@ -10047,11 +10047,11 @@ declare namespace NETWORK {
 	/**  **/
 	function CLOUD_GET_AVAILABILITY_CHECK_RESULT(): boolean
 	/** This function is hard-coded to always return 0. **/
-	function GET_CONTENT_TO_LOAD_TYPE(): any
+	function GET_CONTENT_TO_LOAD_TYPE(): int
 	/** This function is hard-coded to always return 0. **/
-	function GET_IS_LAUNCH_FROM_LIVE_AREA(): any
+	function GET_IS_LAUNCH_FROM_LIVE_AREA(): boolean
 	/** This function is hard-coded to always return 0. **/
-	function GET_IS_LIVE_AREA_LAUNCH_WITH_CONTENT(): any
+	function GET_IS_LIVE_AREA_LAUNCH_WITH_CONTENT(): boolean
 	/** This native does absolutely nothing, just a nullsub **/
 	function CLEAR_SERVICE_EVENT_ARGUMENTS(): void
 	/**  **/
@@ -10061,11 +10061,11 @@ declare namespace NETWORK {
 	/**  **/
 	function UGC_HAS_CREATE_FINISHED(): boolean
 	/**  **/
-	function UGC_DID_CREATE_SUCCEED(): any
+	function UGC_DID_CREATE_SUCCEED(): boolean
 	/**  **/
-	function UGC_GET_CREATE_RESULT(): any
+	function UGC_GET_CREATE_RESULT(): int
 	/**  **/
-	function UGC_GET_CREATE_CONTENT_ID(): any
+	function UGC_GET_CREATE_CONTENT_ID(): string
 	/**  **/
 	function UGC_CLEAR_CREATE_RESULT(): void
 	/**  **/
@@ -10105,15 +10105,15 @@ declare namespace NETWORK {
 	/**  **/
 	function UGC_HAS_GET_FINISHED(): boolean
 	/**  **/
-	function UGC_DID_GET_SUCCEED(): any
+	function UGC_DID_GET_SUCCEED(): boolean
 	/**  **/
-	function UGC_WAS_QUERY_FORCE_CANCELLED(): any
+	function UGC_WAS_QUERY_FORCE_CANCELLED(): boolean
 	/**  **/
-	function UGC_GET_QUERY_RESULT(): any
+	function UGC_GET_QUERY_RESULT(): int
 	/**  **/
-	function UGC_GET_CONTENT_NUM(): any
+	function UGC_GET_CONTENT_NUM(): int
 	/**  **/
-	function UGC_GET_CONTENT_TOTAL(): any
+	function UGC_GET_CONTENT_TOTAL(): int
 	/**  **/
 	function UGC_GET_CONTENT_HASH(): Hash
 	/**  **/
@@ -10125,7 +10125,7 @@ declare namespace NETWORK {
 	/**  **/
 	function UGC_GET_CONTENT_CREATED_BY_LOCAL_PLAYER(p0: any): boolean
 	/**  **/
-	function UGC_GET_CONTENT_USER_NAME(p0: any): any
+	function UGC_GET_CONTENT_USER_NAME(p0: any): string
 	/**  **/
 	function UGC_GET_CONTENT_IS_USING_SC_NICKNAME(p0: any): boolean
 	/**  **/
@@ -10135,7 +10135,7 @@ declare namespace NETWORK {
 	/** Return the root content id of a job. **/
 	function UGC_GET_ROOT_CONTENT_ID(p0: int): string
 	/**  **/
-	function UGC_GET_CONTENT_NAME(p0: any): any
+	function UGC_GET_CONTENT_NAME(p0: any): string
 	/**  **/
 	function UGC_GET_CONTENT_DESCRIPTION_HASH(p0: any): int
 	/**  **/
@@ -10143,25 +10143,25 @@ declare namespace NETWORK {
 	/**  **/
 	function UGC_GET_CONTENT_UPDATED_DATE(p0: any, p1: Address): void
 	/**  **/
-	function UGC_GET_CONTENT_FILE_VERSION(p0: any, p1: any): any
+	function UGC_GET_CONTENT_FILE_VERSION(p0: any, p1: any): int
 	/**  **/
 	function UGC_GET_CONTENT_HAS_LO_RES_PHOTO(p0: int): boolean
 	/**  **/
 	function UGC_GET_CONTENT_HAS_HI_RES_PHOTO(p0: int): boolean
 	/**  **/
-	function UGC_GET_CONTENT_LANGUAGE(p0: any): any
+	function UGC_GET_CONTENT_LANGUAGE(p0: any): int
 	/**  **/
 	function UGC_GET_CONTENT_IS_PUBLISHED(p0: any): boolean
 	/**  **/
 	function UGC_GET_CONTENT_IS_VERIFIED(p0: any): boolean
 	/**  **/
-	function UGC_GET_CONTENT_RATING(p0: any, p1: any): any
+	function UGC_GET_CONTENT_RATING(p0: any, p1: any): float
 	/**  **/
-	function UGC_GET_CONTENT_RATING_COUNT(p0: any, p1: any): any
+	function UGC_GET_CONTENT_RATING_COUNT(p0: any, p1: any): int
 	/**  **/
-	function UGC_GET_CONTENT_RATING_POSITIVE_COUNT(p0: any, p1: any): any
+	function UGC_GET_CONTENT_RATING_POSITIVE_COUNT(p0: any, p1: any): int
 	/**  **/
-	function UGC_GET_CONTENT_RATING_NEGATIVE_COUNT(p0: any, p1: any): any
+	function UGC_GET_CONTENT_RATING_NEGATIVE_COUNT(p0: any, p1: any): int
 	/**  **/
 	function UGC_GET_CONTENT_HAS_PLAYER_RECORD(p0: any): boolean
 	/**  **/
@@ -10179,7 +10179,7 @@ declare namespace NETWORK {
 	/**  **/
 	function UGC_DID_DESCRIPTION_REQUEST_SUCCEED(p0: any): boolean
 	/**  **/
-	function UGC_GET_CACHED_DESCRIPTION(p0: any, p1: any): any
+	function UGC_GET_CACHED_DESCRIPTION(p0: any, p1: any): string
 	/**  **/
 	function UGC_RELEASE_CACHED_DESCRIPTION(p0: any): boolean
 	/**  **/
@@ -10197,17 +10197,17 @@ declare namespace NETWORK {
 	/**  **/
 	function UGC_DID_MODIFY_SUCCEED(): boolean
 	/**  **/
-	function UGC_GET_MODIFY_RESULT(): any
+	function UGC_GET_MODIFY_RESULT(): int
 	/**  **/
 	function UGC_CLEAR_MODIFY_RESULT(): void
 	/**  **/
 	function UGC_GET_CREATORS_BY_USER_ID(p0: Address, p1: Address): boolean
 	/**  **/
-	function UGC_HAS_QUERY_CREATORS_FINISHED(): any
+	function UGC_HAS_QUERY_CREATORS_FINISHED(): boolean
 	/**  **/
-	function UGC_DID_QUERY_CREATORS_SUCCEED(): any
+	function UGC_DID_QUERY_CREATORS_SUCCEED(): boolean
 	/**  **/
-	function UGC_GET_CREATOR_NUM(): any
+	function UGC_GET_CREATOR_NUM(): int
 	/**  **/
 	function UGC_LOAD_OFFLINE_QUERY(p0: any): boolean
 	/**  **/
@@ -10235,7 +10235,7 @@ declare namespace NETWORK {
 	/**  **/
 	function TITLE_TEXTURE_DOWNLOAD_REQUEST(filePath: string, name: string, p2: boolean): int
 	/**  **/
-	function UGC_TEXTURE_DOWNLOAD_REQUEST(p0: string, p1: int, p2: int, p3: int, p4: string, p5: boolean): any
+	function UGC_TEXTURE_DOWNLOAD_REQUEST(p0: string, p1: int, p2: int, p3: int, p4: string, p5: boolean): int
 	/**  **/
 	function TEXTURE_DOWNLOAD_RELEASE(p0: int): void
 	/**  **/
@@ -10273,7 +10273,7 @@ declare namespace NETWORK {
 	/**  **/
 	function NETWORK_HAS_ROS_PRIVILEGE_SPECIAL_EDITION_CONTENT(): boolean
 	/**  **/
-	function NETWORK_START_COMMUNICATION_PERMISSIONS_CHECK(p0: any): any
+	function NETWORK_START_COMMUNICATION_PERMISSIONS_CHECK(p0: any): int
 	/** Always returns -1. Seems to be XB1 specific. **/
 	function NETWORK_START_USER_CONTENT_PERMISSIONS_CHECK(netHandle: Address): int
 	/**  **/
@@ -10294,7 +10294,7 @@ declare namespace NETWORK {
 	/** This native does absolutely nothing, just a nullsub **/
 	function NETWORK_SHOW_PSN_UGC_RESTRICTION(): void
 	/** This function is hard-coded to always return 0. **/
-	function NETWORK_IS_TITLE_UPDATE_REQUIRED(): any
+	function NETWORK_IS_TITLE_UPDATE_REQUIRED(): boolean
 	/**  **/
 	function NETWORK_QUIT_MP_TO_DESKTOP(): void
 	/**  **/
@@ -10370,11 +10370,11 @@ declare namespace OBJECT {
 	/**  **/
 	function HAS_CLOSEST_OBJECT_OF_TYPE_BEEN_COMPLETELY_DESTROYED(x: float, y: float, z: float, radius: float, modelHash: Hash, p5: boolean): boolean
 	/**  **/
-	function GET_HAS_OBJECT_BEEN_COMPLETELY_DESTROYED(p0: any): any
+	function GET_HAS_OBJECT_BEEN_COMPLETELY_DESTROYED(p0: any): boolean
 	/**  **/
 	function GET_OFFSET_FROM_COORD_AND_HEADING_IN_WORLD_COORDS(xPos: float, yPos: float, zPos: float, heading: float, xOffset: float, yOffset: float, zOffset: float): Vector3
 	/**  **/
-	function GET_COORDS_AND_ROTATION_OF_CLOSEST_OBJECT_OF_TYPE(x: float, y: float, z: float, radius: float, modelHash: Hash, outPosition: Vector3Pointer, outRotation: Vector3Pointer, rotationOrder: int): any
+	function GET_COORDS_AND_ROTATION_OF_CLOSEST_OBJECT_OF_TYPE(x: float, y: float, z: float, radius: float, modelHash: Hash, outPosition: Vector3Pointer, outRotation: Vector3Pointer, rotationOrder: int): boolean
 	/** Hardcoded to not work in multiplayer.
 	
 	
@@ -10446,7 +10446,7 @@ declare namespace OBJECT {
 	`forceUpdate` on true invokes DOOR_SYSTEM_SET_DOOR_STATE otherwise requestDoor is unused. **/
 	function DOOR_SYSTEM_SET_OPEN_RATIO(doorHash: Hash, ajar: float, requestDoor: boolean, forceUpdate: boolean): void
 	/**  **/
-	function DOOR_SYSTEM_GET_AUTOMATIC_DISTANCE(doorHash: Hash): any
+	function DOOR_SYSTEM_GET_AUTOMATIC_DISTANCE(doorHash: Hash): float
 	/**  **/
 	function DOOR_SYSTEM_GET_OPEN_RATIO(doorHash: Hash): float
 	/** Includes networking check: ownership vs. or the door itself **isn't** networked.
@@ -10579,9 +10579,9 @@ declare namespace OBJECT {
 	/**  **/
 	function SET_CUSTOM_PICKUP_WEAPON_HASH(pickupHash: Hash, pickup: Pickup): void
 	/** Full list of pickup types by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/pickupTypes.json **/
-	function CREATE_AMBIENT_PICKUP(pickupHash: Hash, posX: float, posY: float, posZ: float, flags: int, value: int, modelHash: Hash, p7: boolean, p8: boolean): Pickup
+	function CREATE_AMBIENT_PICKUP(pickupHash: Hash, posX: float, posY: float, posZ: float, flags: int, value: int, modelHash: Hash, p7: boolean, p8: boolean): EntityHandle
 	/**  **/
-	function CREATE_NON_NETWORKED_AMBIENT_PICKUP(pickupHash: Hash, posX: float, posY: float, posZ: float, flags: int, value: int, modelHash: Hash, p7: boolean, p8: boolean): Pickup
+	function CREATE_NON_NETWORKED_AMBIENT_PICKUP(pickupHash: Hash, posX: float, posY: float, posZ: float, flags: int, value: int, modelHash: Hash, p7: boolean, p8: boolean): EntityHandle
 	/**  **/
 	function BLOCK_PLAYERS_FOR_AMBIENT_PICKUP(p0: any, p1: any): void
 	/** Full list of pickup types by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/pickupTypes.json **/
@@ -10780,7 +10780,7 @@ declare namespace OBJECT {
 	/**  **/
 	function SET_PROP_TINT_INDEX(p0: any, p1: any): void
 	/**  **/
-	function SET_PROP_LIGHT_COLOR(object: EntityHandle, p1: boolean, r: int, g: int, b: int): any
+	function SET_PROP_LIGHT_COLOR(object: EntityHandle, p1: boolean, r: int, g: int, b: int): boolean
 	/**  **/
 	function IS_PROP_LIGHT_OVERRIDEN(object: EntityHandle): boolean
 	/**  **/
@@ -10800,7 +10800,7 @@ declare namespace OBJECT {
 	/**  **/
 	function SET_DISABLE_COLLISIONS_BETWEEN_CARS_AND_CAR_PARACHUTE(p0: any): void
 	/**  **/
-	function SET_PROJECTILES_SHOULD_EXPLODE_ON_CONTACT(p0: any, p1: any): void
+	function SET_PROJECTILES_SHOULD_EXPLODE_ON_CONTACT(entity: EntityHandle, p1: any): void
 	/** Activate the physics to: "xs_prop_arena_{flipper,wall,bollard,turntable,pit}" **/
 	function SET_DRIVE_ARTICULATED_JOINT(object: EntityHandle, toggle: boolean, p2: int): void
 	/**  **/
@@ -10812,7 +10812,7 @@ declare namespace OBJECT {
 	/**  **/
 	function GET_IS_ARTICULATED_JOINT_AT_MIN_ANGLE(object: EntityHandle, p1: any): boolean
 	/**  **/
-	function GET_IS_ARTICULATED_JOINT_AT_MAX_ANGLE(p0: any, p1: any): any
+	function GET_IS_ARTICULATED_JOINT_AT_MAX_ANGLE(p0: any, p1: any): boolean
 	/**  **/
 	function SET_IS_OBJECT_ARTICULATED(object: EntityHandle, toggle: boolean): void
 	/**  **/
@@ -11046,7 +11046,7 @@ declare namespace PATHFIND {
 	Normal roads where plenty of Peds spawn will return false **/
 	function GET_VEHICLE_NODE_IS_SWITCHED_OFF(nodeID: int): boolean
 	/** p1 seems to be always 1.0f in the scripts **/
-	function GET_CLOSEST_ROAD(x: float, y: float, z: float, p3: float, p4: int, p5: Vector3Pointer, p6: Vector3Pointer, p7: Address, p8: Address, p9: FloatPointer, p10: boolean): any
+	function GET_CLOSEST_ROAD(x: float, y: float, z: float, p3: float, p4: int, p5: Vector3Pointer, p6: Vector3Pointer, p7: Address, p8: Address, p9: FloatPointer, p10: boolean): boolean
 	/**  **/
 	function SET_ALLOW_STREAM_PROLOGUE_NODES(toggle: boolean): void
 	/** Activates Cayo Perico path nodes if passed `1`. GPS navigation will start working, maybe more stuff will change, not sure. It seems if you try to unload (pass `0`) when close to the island, your game might crash. **/
@@ -11141,7 +11141,7 @@ declare namespace PATHFIND {
 	/**  **/
 	function GET_NUM_NAVMESHES_EXISTING_IN_AREA(x1: float, y1: float, z1: float, x2: float, y2: float, z2: float): int
 	/**  **/
-	function ADD_NAVMESH_BLOCKING_OBJECT(p0: float, p1: float, p2: float, p3: float, p4: float, p5: float, p6: float, p7: boolean, p8: any): any
+	function ADD_NAVMESH_BLOCKING_OBJECT(p0: float, p1: float, p2: float, p3: float, p4: float, p5: float, p6: float, p7: boolean, p8: any): int
 	/**  **/
 	function UPDATE_NAVMESH_BLOCKING_OBJECT(p0: any, p1: float, p2: float, p3: float, p4: float, p5: float, p6: float, p7: float, p8: any): void
 	/**  **/
@@ -11416,7 +11416,7 @@ declare namespace PED {
 	/**  **/
 	function RESET_AI_MELEE_WEAPON_DAMAGE_MODIFIER(): void
 	/**  **/
-	function SET_TREAT_AS_AMBIENT_PED_FOR_DRIVER_LOCKON(p0: any, p1: boolean): void
+	function SET_TREAT_AS_AMBIENT_PED_FOR_DRIVER_LOCKON(ped: EntityHandle, p1: boolean): void
 	/**  **/
 	function SET_PED_CAN_BE_TARGETTED(ped: EntityHandle, toggle: boolean): void
 	/**  **/
@@ -11438,9 +11438,9 @@ declare namespace PED {
 	/**  **/
 	function IS_PED_JUMPING(ped: EntityHandle): boolean
 	/**  **/
-	function IS_PED_LANDING(p0: any): any
+	function IS_PED_LANDING(p0: any): boolean
 	/**  **/
-	function IS_PED_DOING_A_BEAST_JUMP(p0: any): any
+	function IS_PED_DOING_A_BEAST_JUMP(p0: any): boolean
 	/**  **/
 	function IS_PED_CLIMBING(ped: EntityHandle): boolean
 	/**  **/
@@ -11574,7 +11574,7 @@ declare namespace PED {
 	/**  **/
 	function IS_PED_GOING_INTO_COVER(ped: EntityHandle): boolean
 	/** i could be time. Only example in the decompiled scripts uses it as -1. **/
-	function SET_PED_PINNED_DOWN(ped: EntityHandle, pinned: boolean, i: int): any
+	function SET_PED_PINNED_DOWN(ped: EntityHandle, pinned: boolean, i: int): boolean
 	/**  **/
 	function GET_SEAT_PED_IS_TRYING_TO_ENTER(ped: EntityHandle): int
 	/**  **/
@@ -11627,7 +11627,7 @@ declare namespace PED {
 	PED::CLEAR_RELATIONSHIP_BETWEEN_GROUPS(2, 0xA49E591C, l_1017); **/
 	function CLEAR_RELATIONSHIP_BETWEEN_GROUPS(relationship: int, group1: Hash, group2: Hash): void
 	/** Can't select void. This function returns nothing. The hash of the created relationship group is output in the second parameter. **/
-	function ADD_RELATIONSHIP_GROUP(name: string, groupHash: Address): any
+	function ADD_RELATIONSHIP_GROUP(name: string, groupHash: Address): boolean
 	/**  **/
 	function REMOVE_RELATIONSHIP_GROUP(groupHash: Hash): void
 	/**  **/
@@ -12036,9 +12036,9 @@ declare namespace PED {
 	/**  **/
 	function GET_MP_OUTFIT_DATA_FROM_METADATA(p0: Address, p1: Address): boolean
 	/**  **/
-	function GET_FM_MALE_SHOP_PED_APPAREL_ITEM_INDEX(p0: any): any
+	function GET_FM_MALE_SHOP_PED_APPAREL_ITEM_INDEX(p0: int): int
 	/**  **/
-	function GET_FM_FEMALE_SHOP_PED_APPAREL_ITEM_INDEX(p0: any): any
+	function GET_FM_FEMALE_SHOP_PED_APPAREL_ITEM_INDEX(p0: int): int
 	/** Checks if the component variation is valid, this works great for randomizing components using loops.
 	
 	List of component/props ID
@@ -12222,7 +12222,7 @@ declare namespace PED {
 	/**  **/
 	function IS_PED_HAIR_TINT_FOR_BARBER(colorID: int): boolean
 	/**  **/
-	function GET_DEFAULT_SECONDARY_TINT_FOR_BARBER(colorID: int): any
+	function GET_DEFAULT_SECONDARY_TINT_FOR_BARBER(colorID: int): int
 	/**  **/
 	function IS_PED_LIPSTICK_TINT_FOR_BARBER(colorID: int): boolean
 	/**  **/
@@ -12230,7 +12230,7 @@ declare namespace PED {
 	/**  **/
 	function IS_PED_BLUSH_FACEPAINT_TINT_FOR_BARBER(colorId: int): boolean
 	/**  **/
-	function GET_TINT_INDEX_FOR_LAST_GEN_HAIR_TEXTURE(modelHash: Hash, drawableId: int, textureId: int): any
+	function GET_TINT_INDEX_FOR_LAST_GEN_HAIR_TEXTURE(modelHash: Hash, drawableId: int, textureId: int): int
 	/** Sets the various freemode face features, e.g. nose length, chin shape. Scale ranges from -1.0 to 1.0.
 	
 	
@@ -12294,14 +12294,14 @@ declare namespace PED {
 	PED::SET_PED_PRELOAD_VARIATION_DATA(PLAYER::PLAYER_PED_ID(), 8, PED::GET_PED_DRAWABLE_VARIATION(PLAYER::PLAYER_PED_ID(), 8), PED::GET_PED_TEXTURE_VARIATION(PLAYER::PLAYER_PED_ID(), 8));
 	
 	p1 is probably componentId **/
-	function SET_PED_PRELOAD_VARIATION_DATA(ped: EntityHandle, slot: int, drawableId: int, textureId: int): any
+	function SET_PED_PRELOAD_VARIATION_DATA(ped: EntityHandle, slot: int, drawableId: int, textureId: int): int
 	/**  **/
 	function HAS_PED_PRELOAD_VARIATION_DATA_FINISHED(ped: EntityHandle): boolean
 	/**  **/
 	function RELEASE_PED_PRELOAD_VARIATION_DATA(ped: EntityHandle): void
 	/** List of component/props ID
 	gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html **/
-	function SET_PED_PRELOAD_PROP_DATA(ped: EntityHandle, componentId: int, drawableId: int, TextureId: int): boolean
+	function SET_PED_PRELOAD_PROP_DATA(ped: EntityHandle, componentId: int, drawableId: int, TextureId: int): int
 	/**  **/
 	function HAS_PED_PRELOAD_PROP_DATA_FINISHED(ped: EntityHandle): boolean
 	/**  **/
@@ -12741,19 +12741,19 @@ declare namespace PED {
 	/**  **/
 	function IS_PED_USING_ANY_SCENARIO(ped: EntityHandle): boolean
 	/**  **/
-	function SET_PED_PANIC_EXIT_SCENARIO(p0: any, p1: any, p2: any, p3: any): any
+	function SET_PED_PANIC_EXIT_SCENARIO(p0: any, p1: any, p2: any, p3: any): boolean
 	/**  **/
 	function TOGGLE_SCENARIO_PED_COWER_IN_PLACE(ped: EntityHandle, toggle: boolean): void
 	/**  **/
-	function TRIGGER_PED_SCENARIO_PANICEXITTOFLEE(p0: any, p1: any, p2: any, p3: any): any
+	function TRIGGER_PED_SCENARIO_PANICEXITTOFLEE(p0: any, p1: any, p2: any, p3: any): boolean
 	/**  **/
-	function SET_PED_SHOULD_PLAY_DIRECTED_NORMAL_SCENARIO_EXIT(p0: any, p1: any, p2: any, p3: any): any
+	function SET_PED_SHOULD_PLAY_DIRECTED_NORMAL_SCENARIO_EXIT(p0: any, p1: any, p2: any, p3: any): boolean
 	/**  **/
 	function SET_PED_SHOULD_PLAY_NORMAL_SCENARIO_EXIT(ped: EntityHandle): void
 	/**  **/
 	function SET_PED_SHOULD_PLAY_IMMEDIATE_SCENARIO_EXIT(ped: EntityHandle): void
 	/**  **/
-	function SET_PED_SHOULD_PLAY_FLEE_SCENARIO_EXIT(ped: EntityHandle, p1: any, p2: any, p3: any): any
+	function SET_PED_SHOULD_PLAY_FLEE_SCENARIO_EXIT(ped: EntityHandle, p1: any, p2: any, p3: any): boolean
 	/**  **/
 	function SET_PED_SHOULD_IGNORE_SCENARIO_EXIT_COLLISION_CHECKS(ped: EntityHandle, p1: boolean): void
 	/**  **/
@@ -12761,7 +12761,7 @@ declare namespace PED {
 	/**  **/
 	function SET_PED_SHOULD_PROBE_FOR_SCENARIO_EXITS_IN_ONE_FRAME(p0: any, p1: boolean): void
 	/**  **/
-	function IS_PED_GESTURING(p0: any): any
+	function IS_PED_GESTURING(p0: any): boolean
 	/** Full list of animation dictionaries and anims by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/animDictsCompact.json **/
 	function PLAY_FACIAL_ANIM(ped: EntityHandle, animName: string, animDict: string): void
 	/** Clipsets:
@@ -13349,9 +13349,9 @@ declare namespace PED {
 	/**  **/
 	function CLEAR_PED_STORED_HAT_PROP(ped: EntityHandle): void
 	/**  **/
-	function GET_PED_HELMET_STORED_HAT_PROP_INDEX(ped: EntityHandle): any
+	function GET_PED_HELMET_STORED_HAT_PROP_INDEX(ped: EntityHandle): int
 	/**  **/
-	function GET_PED_HELMET_STORED_HAT_TEX_INDEX(ped: EntityHandle): any
+	function GET_PED_HELMET_STORED_HAT_TEX_INDEX(ped: EntityHandle): int
 	/**  **/
 	function IS_CURRENT_HEAD_PROP_A_HELMET(p0: any): boolean
 	/**  **/
@@ -13718,7 +13718,7 @@ declare namespace PED {
 	/**  **/
 	function IS_PED_SHADER_READY(ped: EntityHandle): boolean
 	/**  **/
-	function SET_PED_ENABLE_CREW_EMBLEM(p0: any, p1: any): void
+	function SET_PED_ENABLE_CREW_EMBLEM(ped: EntityHandle, toggle: boolean): void
 	/** This native does absolutely nothing, just a nullsub **/
 	function REQUEST_RAGDOLL_BOUNDS_UPDATE(p0: any, p1: any): void
 	/** Enable/disable ped shadow (ambient occlusion). https://gfycat.com/thankfulesteemedgecko **/
@@ -14370,7 +14370,7 @@ declare namespace PLAYER {
 	/**  **/
 	function GET_PLAYER_UNDERWATER_TIME_REMAINING(player: Player): float
 	/**  **/
-	function SET_PLAYER_UNDERWATER_BREATH_PERCENT_REMAINING(player: Player, time: float): any
+	function SET_PLAYER_UNDERWATER_BREATH_PERCENT_REMAINING(player: Player, time: float): float
 	/** Returns the group ID the player is member of. **/
 	function GET_PLAYER_GROUP(player: Player): int
 	/**  **/
@@ -14948,11 +14948,11 @@ declare namespace PLAYER {
 	/**  **/
 	function GET_PLAYER_FAKE_WANTED_LEVEL(player: Player): int
 	/**  **/
-	function SET_PLAYER_CAN_DAMAGE_PLAYER(p0: any, p1: any, p2: any): void
+	function SET_PLAYER_CAN_DAMAGE_PLAYER(player1: Player, player2: Player, toggle: boolean): void
 	/**  **/
 	function SET_APPLY_WAYPOINT_OF_PLAYER(p0: any, p1: any): void
 	/**  **/
-	function IS_PLAYER_VEHICLE_WEAPON_TOGGLED_TO_NON_HOMING(p0: any): any
+	function IS_PLAYER_VEHICLE_WEAPON_TOGGLED_TO_NON_HOMING(p0: any): boolean
 	/** Unsets playerPed+330 if the current weapon has certain flags. **/
 	function SET_PLAYER_VEHICLE_WEAPON_TO_NON_HOMING(p0: any): void
 	/**  **/
@@ -14962,7 +14962,7 @@ declare namespace PLAYER {
 	/**  **/
 	function REMOVE_PLAYER_TARGETABLE_ENTITY(player: Player, entity: EntityHandle): void
 	/**  **/
-	function SET_PLAYER_PREVIOUS_VARIATION_DATA(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): void
+	function SET_PLAYER_PREVIOUS_VARIATION_DATA(player: Player, p1: int, p2: int, p3: any, p4: any, p5: any): void
 	/** Resets values set by SET_SCRIPT_FIRE_POSITION **/
 	function REMOVE_SCRIPT_FIRE_POSITION(): void
 	/**  **/
@@ -15011,9 +15011,9 @@ declare namespace RECORDING {
 	retn **/
 	function IS_REPLAY_RECORDING(): boolean
 	/**  **/
-	function IS_REPLAY_INITIALIZED(): any
+	function IS_REPLAY_INITIALIZED(): boolean
 	/**  **/
-	function IS_REPLAY_AVAILABLE(): any
+	function IS_REPLAY_AVAILABLE(): boolean
 	/**  **/
 	function IS_REPLAY_RECORD_SPACE_AVAILABLE(p0: boolean): boolean
 }
@@ -15233,9 +15233,9 @@ declare namespace SOCIALCLUB {
 	/**  **/
 	function SC_EMAIL_RETRIEVE_EMAILS(offset: int, limit: int): void
 	/**  **/
-	function SC_EMAIL_GET_RETRIEVAL_STATUS(): any
+	function SC_EMAIL_GET_RETRIEVAL_STATUS(): int
 	/**  **/
-	function SC_EMAIL_GET_NUM_RETRIEVED_EMAILS(): any
+	function SC_EMAIL_GET_NUM_RETRIEVED_EMAILS(): int
 	/**  **/
 	function SC_EMAIL_GET_EMAIL_AT_INDEX(p0: int, p1: Address): boolean
 	/**  **/
@@ -15247,7 +15247,7 @@ declare namespace SOCIALCLUB {
 	/**  **/
 	function SC_EMAIL_SEND_EMAIL(p0: string): void
 	/**  **/
-	function SC_EMAIL_SET_CURRENT_EMAIL_TAG(p0: any): any
+	function SC_EMAIL_SET_CURRENT_EMAIL_TAG(p0: any): boolean
 	/**  **/
 	function SC_CACHE_NEW_ROCKSTAR_MSGS(toggle: boolean): void
 	/**  **/
@@ -15291,7 +15291,7 @@ declare namespace SOCIALCLUB {
 	/**  **/
 	function SC_LICENSEPLATE_GET_CHECK_IS_VALID(p0: any): boolean
 	/**  **/
-	function SC_LICENSEPLATE_GET_CHECK_IS_PENDING(p0: any): any
+	function SC_LICENSEPLATE_GET_CHECK_IS_PENDING(p0: any): boolean
 	/**  **/
 	function SC_LICENSEPLATE_GET_COUNT(token: int): int
 	/**  **/
@@ -15303,13 +15303,13 @@ declare namespace SOCIALCLUB {
 	/**  **/
 	function SC_LICENSEPLATE_ADD(plateText: string, plateData: Address, token: IntPointer): boolean
 	/**  **/
-	function SC_LICENSEPLATE_GET_ADD_IS_PENDING(token: int): any
+	function SC_LICENSEPLATE_GET_ADD_IS_PENDING(token: int): boolean
 	/**  **/
-	function SC_LICENSEPLATE_GET_ADD_STATUS(token: int): any
+	function SC_LICENSEPLATE_GET_ADD_STATUS(token: int): int
 	/**  **/
 	function SC_LICENSEPLATE_ISVALID(plateText: string, token: IntPointer): boolean
 	/**  **/
-	function SC_LICENSEPLATE_GET_ISVALID_IS_PENDING(token: int): int
+	function SC_LICENSEPLATE_GET_ISVALID_IS_PENDING(token: int): boolean
 	/**  **/
 	function SC_LICENSEPLATE_GET_ISVALID_STATUS(token: int): int
 	/**  **/
@@ -15351,7 +15351,7 @@ declare namespace SOCIALCLUB {
 	/**  **/
 	function SC_TRANSITION_NEWS_SHOW_TIMED(p0: any, p1: any): boolean
 	/**  **/
-	function SC_TRANSITION_NEWS_SHOW_NEXT_ITEM(): any
+	function SC_TRANSITION_NEWS_SHOW_NEXT_ITEM(): boolean
 	/**  **/
 	function SC_TRANSITION_NEWS_HAS_EXTRA_DATA_TU(): boolean
 	/**  **/
@@ -15359,7 +15359,7 @@ declare namespace SOCIALCLUB {
 	/**  **/
 	function SC_TRANSITION_NEWS_END(): void
 	/**  **/
-	function SC_PAUSE_NEWS_INIT_STARTER_PACK(p0: any): any
+	function SC_PAUSE_NEWS_INIT_STARTER_PACK(p0: any): boolean
 	/** Fills some 0x30 sized struct **/
 	function SC_PAUSE_NEWS_GET_PENDING_STORY(p0: any): boolean
 	/**  **/
@@ -15379,7 +15379,7 @@ declare namespace STATS {
 	for (v_2 = 0; v_2 <= 4; v_2 += 1) {
 	    STATS::STAT_CLEAR_SLOT_FOR_RELOAD(v_2);
 	} **/
-	function STAT_CLEAR_SLOT_FOR_RELOAD(statSlot: int): any
+	function STAT_CLEAR_SLOT_FOR_RELOAD(statSlot: int): boolean
 	/**  **/
 	function STAT_LOAD(p0: int): boolean
 	/**  **/
@@ -15392,14 +15392,14 @@ declare namespace STATS {
 	function STAT_SAVE_PENDING(): boolean
 	/**  **/
 	function STAT_SAVE_PENDING_OR_REQUESTED(): boolean
+	/** p0 is characterSlot? seems range from 0 to 2 **/
+	function STAT_DELETE_SLOT(p0: int): boolean
 	/**  **/
-	function STAT_DELETE_SLOT(p0: any): any
+	function STAT_SLOT_IS_LOADED(p0: int): boolean
 	/**  **/
-	function STAT_SLOT_IS_LOADED(p0: any): boolean
+	function STAT_CLOUD_SLOT_LOAD_FAILED(p0: int): boolean
 	/**  **/
-	function STAT_CLOUD_SLOT_LOAD_FAILED(p0: any): boolean
-	/**  **/
-	function STAT_CLOUD_SLOT_LOAD_FAILED_CODE(p0: any): any
+	function STAT_CLOUD_SLOT_LOAD_FAILED_CODE(p0: any): int
 	/**  **/
 	function STAT_SET_BLOCK_SAVES(toggle: boolean): void
 	/**  **/
@@ -15413,7 +15413,7 @@ declare namespace STATS {
 	/**  **/
 	function STAT_CLEAR_DIRTY_READ_DETECTED(): void
 	/**  **/
-	function STAT_GET_LOAD_SAFE_TO_PROGRESS_TO_MP_FROM_SP(): any
+	function STAT_GET_LOAD_SAFE_TO_PROGRESS_TO_MP_FROM_SP(): boolean
 	/** Example:
 	 STATS::STAT_SET_INT(MISC::GET_HASH_KEY("MPPLY_KILLS_PLAYERS"), 1337, true); **/
 	function STAT_SET_INT(statName: Hash, value: int, save: boolean): boolean
@@ -15541,9 +15541,9 @@ declare namespace STATS {
 	function STAT_COMMUNITY_SYNCH_IS_PENDING(): boolean
 	/**  **/
 	function STAT_COMMUNITY_GET_HISTORY(statName: Hash, p1: int, outValue: FloatPointer): boolean
-	/**  **/
+	/** p0 seems to range from 0 to 7 **/
 	function STAT_RESET_ALL_ONLINE_CHARACTER_STATS(p0: int): void
-	/**  **/
+	/** p0 seems to range from 0 to 7 **/
 	function STAT_LOCAL_RESET_ALL_ONLINE_CHARACTER_STATS(p0: int): void
 	/**  **/
 	function STAT_GET_NUMBER_OF_DAYS(statName: Hash): int
@@ -15702,15 +15702,15 @@ declare namespace STATS {
 	/**  **/
 	function PLAYSTATS_PIMENU_HIDE_OPTIONS(data: Address): void
 	/**  **/
-	function LEADERBOARDS_GET_NUMBER_OF_COLUMNS(p0: any, p1: any): any
+	function LEADERBOARDS_GET_NUMBER_OF_COLUMNS(p0: any, p1: any): int
 	/**  **/
-	function LEADERBOARDS_GET_COLUMN_ID(p0: any, p1: any, p2: any): any
+	function LEADERBOARDS_GET_COLUMN_ID(p0: any, p1: any, p2: any): int
 	/**  **/
-	function LEADERBOARDS_GET_COLUMN_TYPE(p0: any, p1: any, p2: any): any
+	function LEADERBOARDS_GET_COLUMN_TYPE(p0: any, p1: any, p2: any): int
 	/**  **/
-	function LEADERBOARDS_READ_CLEAR_ALL(): any
+	function LEADERBOARDS_READ_CLEAR_ALL(): int
 	/**  **/
-	function LEADERBOARDS_READ_CLEAR(p0: any, p1: any, p2: any): any
+	function LEADERBOARDS_READ_CLEAR(p0: any, p1: any, p2: any): int
 	/**  **/
 	function LEADERBOARDS_READ_PENDING(p0: any, p1: any, p2: any): boolean
 	/**  **/
@@ -15742,7 +15742,7 @@ declare namespace STATS {
 	/**  **/
 	function LEADERBOARDS2_READ_GET_ROW_DATA_INFO(p0: any, p1: Address): boolean
 	/**  **/
-	function LEADERBOARDS2_READ_GET_ROW_DATA_INT(p0: any, p1: any): any
+	function LEADERBOARDS2_READ_GET_ROW_DATA_INT(p0: any, p1: any): int
 	/**  **/
 	function LEADERBOARDS2_READ_GET_ROW_DATA_FLOAT(p0: any, p1: any): float
 	/**  **/
@@ -15760,7 +15760,7 @@ declare namespace STATS {
 	/**  **/
 	function LEADERBOARDS_GET_CACHE_EXISTS(p0: any): boolean
 	/**  **/
-	function LEADERBOARDS_GET_CACHE_TIME(p0: any): any
+	function LEADERBOARDS_GET_CACHE_TIME(p0: any): int
 	/**  **/
 	function LEADERBOARDS_GET_CACHE_NUMBER_OF_ROWS(p0: any): int
 	/**  **/
@@ -15806,13 +15806,13 @@ declare namespace STATS {
 	/**  **/
 	function STAT_MIGRATE_SAVEGAME_GET_STATUS(): int
 	/**  **/
-	function STAT_MIGRATE_CHECK_ALREADY_DONE(): any
+	function STAT_MIGRATE_CHECK_ALREADY_DONE(): boolean
 	/**  **/
-	function STAT_MIGRATE_CHECK_START(): any
+	function STAT_MIGRATE_CHECK_START(): boolean
 	/**  **/
-	function STAT_MIGRATE_CHECK_GET_IS_PLATFORM_AVAILABLE(p0: any): any
+	function STAT_MIGRATE_CHECK_GET_IS_PLATFORM_AVAILABLE(p0: any): int
 	/**  **/
-	function STAT_MIGRATE_CHECK_GET_PLATFORM_STATUS(p0: any, p1: Address): any
+	function STAT_MIGRATE_CHECK_GET_PLATFORM_STATUS(p0: any, p1: Address): int
 	/**  **/
 	function STAT_GET_SAVE_MIGRATION_STATUS(data: Address): int
 	/**  **/
@@ -15870,7 +15870,7 @@ declare namespace STATS {
 		Max,
 		Min
 	} **/
-	function STAT_START_RECORD_STAT(statType: int, valueType: int): any
+	function STAT_START_RECORD_STAT(statType: int, valueType: int): boolean
 	/**  **/
 	function STAT_STOP_RECORD_STAT(): boolean
 	/**  **/
@@ -15896,7 +15896,7 @@ declare namespace STATS {
 	/** Fly low to the ground for the longest distance **/
 	function STAT_GET_CHALLENGE_FLYING_DIST(): float
 	/**  **/
-	function STAT_GET_FLYING_ALTITUDE(p0: FloatPointer): boolean
+	function STAT_GET_FLYING_ALTITUDE(outValue: FloatPointer): boolean
 	/** Or non-flyable area **/
 	function STAT_IS_PLAYER_VEHICLE_ABOVE_OCEAN(): boolean
 	/** Travel the furthest distance when bailing from a vehicle **/
@@ -16048,7 +16048,7 @@ declare namespace STATS {
 	/**  **/
 	function PLAYSTATS_SWITCH_PASSIVE_MODE(p0: boolean, p1: int, p2: int, p3: int): void
 	/**  **/
-	function PLAYSTATS_COLLECTIBLE_PICKED_UP(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any, p6: any, p7: any, p8: any, p9: any, p10: any): void
+	function PLAYSTATS_COLLECTIBLE_PICKED_UP(p0: any, p1: any, p2: any, p3: any, moneyAmount: int, rpAmount: int, chipsAmount: int, p7: any, p8: int, p9: any, p10: any): void
 	/**  **/
 	function PLAYSTATS_CASINO_STORY_MISSION_ENDED(p0: any, p1: any): void
 	/**  **/
@@ -16130,7 +16130,7 @@ declare namespace STATS {
 	/**  **/
 	function PLAYSTATS_CARCLUB_CHALLENGE(p0: any, p1: any, p2: any, p3: any): void
 	/**  **/
-	function PLAYSTATS_CARCLUB_PRIZE(p0: any, p1: any): void
+	function PLAYSTATS_CARCLUB_PRIZE(p0: int, vehicleModel: Hash): void
 	/**  **/
 	function PLAYSTATS_AWARD_NAV(p0: any, p1: any): void
 	/**  **/
@@ -16318,11 +16318,11 @@ declare namespace STREAMING {
 	/** This native does absolutely nothing, just a nullsub **/
 	function SET_ALL_MAPDATA_CULLED(p0: any): void
 	/** Always returns zero. **/
-	function STREAMVOL_CREATE_SPHERE(x: float, y: float, z: float, rad: float, p4: any, p5: any): any
+	function STREAMVOL_CREATE_SPHERE(x: float, y: float, z: float, rad: float, p4: any, p5: any): int
 	/** Always returns zero. **/
-	function STREAMVOL_CREATE_FRUSTUM(p0: float, p1: float, p2: float, p3: float, p4: float, p5: float, p6: float, p7: any, p8: any): any
+	function STREAMVOL_CREATE_FRUSTUM(p0: float, p1: float, p2: float, p3: float, p4: float, p5: float, p6: float, p7: any, p8: any): int
 	/** Always returns zero. **/
-	function STREAMVOL_CREATE_LINE(p0: float, p1: float, p2: float, p3: float, p4: float, p5: float, p6: any): any
+	function STREAMVOL_CREATE_LINE(p0: float, p1: float, p2: float, p3: float, p4: float, p5: float, p6: any): int
 	/**  **/
 	function STREAMVOL_DELETE(unused: any): void
 	/**  **/
@@ -16344,7 +16344,7 @@ declare namespace STREAMING {
 	/**  **/
 	function IS_NEW_LOAD_SCENE_LOADED(): boolean
 	/**  **/
-	function IS_SAFE_TO_START_PLAYER_SWITCH(): any
+	function IS_SAFE_TO_START_PLAYER_SWITCH(): boolean
 	/** // this enum comes directly from R* so don't edit this
 	enum ePlayerSwitchTypes
 	{
@@ -16455,7 +16455,7 @@ declare namespace STREAMING {
 	/**  **/
 	function IPL_GROUP_SWAP_FINISH(): void
 	/**  **/
-	function IPL_GROUP_SWAP_IS_ACTIVE(): any
+	function IPL_GROUP_SWAP_IS_ACTIVE(): boolean
 	/** This native is used to attribute the SRL that BEGIN_SRL is going to load. This is usually used for 'in-game' cinematics (not cutscenes but camera stuff) instead of SET_FOCUS_POS_AND_VEL because it loads a specific area of the map which is pretty useful when the camera moves from distant areas.
 	For instance, GTA:O opening cutscene.
 	https://pastebin.com/2EeKVeLA : a list of SRL found in srllist.meta
@@ -17806,7 +17806,7 @@ declare namespace TASK {
 	/**  **/
 	function GET_PED_WAYPOINT_DISTANCE(p0: any): float
 	/**  **/
-	function SET_PED_WAYPOINT_ROUTE_OFFSET(p0: any, p1: any, p2: any, p3: any): any
+	function SET_PED_WAYPOINT_ROUTE_OFFSET(p0: any, p1: any, p2: any, p3: any): boolean
 	/**  **/
 	function GET_WAYPOINT_DISTANCE_ALONG_ROUTE(p0: string, p1: int): float
 	/**  **/
@@ -17899,7 +17899,7 @@ declare namespace TASK {
 	/** Used only once in the scripts (fm_mission_controller) like so:
 	
 	TASK::SET_EXPECTED_CLONE_NEXT_TASK_MOVE_NETWORK_STATE(iLocal_3160, "Cutting"); **/
-	function SET_EXPECTED_CLONE_NEXT_TASK_MOVE_NETWORK_STATE(ped: EntityHandle, state: string): any
+	function SET_EXPECTED_CLONE_NEXT_TASK_MOVE_NETWORK_STATE(ped: EntityHandle, state: string): boolean
 	/**  **/
 	function GET_TASK_MOVE_NETWORK_STATE(ped: EntityHandle): string
 	/**  **/
@@ -17922,7 +17922,7 @@ declare namespace TASK {
 	/**  **/
 	function GET_TASK_MOVE_NETWORK_EVENT(ped: EntityHandle, eventName: string): boolean
 	/** Doesn't actually return anything. **/
-	function SET_TASK_MOVE_NETWORK_ENABLE_COLLISION_ON_NETWORK_CLONE_WHEN_FIXED(ped: EntityHandle, enable: boolean): any
+	function SET_TASK_MOVE_NETWORK_ENABLE_COLLISION_ON_NETWORK_CLONE_WHEN_FIXED(ped: EntityHandle, enable: boolean): boolean
 	/**  **/
 	function IS_MOVE_BLEND_RATIO_STILL(ped: EntityHandle): boolean
 	/**  **/
@@ -18008,7 +18008,7 @@ declare namespace VEHICLE {
 	2: locked on **/
 	function GET_VEHICLE_HOMING_LOCKON_STATE(vehicle: EntityHandle): int
 	/**  **/
-	function GET_VEHICLE_HOMING_LOCKEDONTO_STATE(p0: any): any
+	function GET_VEHICLE_HOMING_LOCKEDONTO_STATE(p0: any): int
 	/**  **/
 	function SET_VEHICLE_HOMING_LOCKEDONTO_STATE(p0: any, p1: any): void
 	/**  **/
@@ -18052,7 +18052,7 @@ declare namespace VEHICLE {
 	sfink: This has an additional param(Vehicle vehicle, float p1) which is always set to 5.0f in the b944 scripts. **/
 	function SET_VEHICLE_ON_GROUND_PROPERLY(vehicle: EntityHandle, p1: float): boolean
 	/**  **/
-	function SET_VEHICLE_USE_CUTSCENE_WHEEL_COMPRESSION(p0: EntityHandle, p1: boolean, p2: boolean, p3: boolean): any
+	function SET_VEHICLE_USE_CUTSCENE_WHEEL_COMPRESSION(p0: EntityHandle, p1: boolean, p2: boolean, p3: boolean): boolean
 	/**  **/
 	function IS_VEHICLE_STUCK_ON_ROOF(vehicle: EntityHandle): boolean
 	/**  **/
@@ -18891,7 +18891,7 @@ declare namespace VEHICLE {
 	/** Full list of vehicles by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/vehicles.json **/
 	function GET_VEHICLE_LAYOUT_HASH(vehicle: EntityHandle): Hash
 	/**  **/
-	function GET_IN_VEHICLE_CLIPSET_HASH_FOR_SEAT(vehicle: EntityHandle, p1: int): any
+	function GET_IN_VEHICLE_CLIPSET_HASH_FOR_SEAT(vehicle: EntityHandle, p1: int): Hash
 	/** Makes the train all jumbled up and derailed as it moves on the tracks (though that wont stop it from its normal operations) **/
 	function SET_RENDER_TRAIN_AS_DERAILED(train: EntityHandle, toggle: boolean): void
 	/** They use the same color indexs as SET_VEHICLE_COLOURS. **/
@@ -18987,7 +18987,7 @@ declare namespace VEHICLE {
 	p1 is false almost always. However, in launcher_carwash/carwash1/carwash2 scripts, p1 is true and is accompanied by DOES_VEHICLE_HAVE_ROOF. If p1 is true, it seems that every single vehicle will return true irrespective of being a convertible. **/
 	function IS_VEHICLE_A_CONVERTIBLE(vehicle: EntityHandle, p1: boolean): boolean
 	/** Transforms the `stormberg`/`toreador` to its "submarine" variant. If the vehicle is already in that state then the vehicle transformation audio will still play, but the vehicle won't change at all. **/
-	function TRANSFORM_TO_SUBMARINE(vehicle: EntityHandle, noAnimation: boolean): void
+	function TRANSFORM_TO_SUBMARINE(vehicle: EntityHandle, noAnimation: boolean): boolean
 	/** Transforms the `stormberg`/`toreador` to its "road vehicle" variant. If the vehicle is already in that state then the vehicle transformation audio will still play, but the vehicle won't change at all. **/
 	function TRANSFORM_TO_CAR(vehicle: EntityHandle, noAnimation: boolean): void
 	/**  **/
@@ -19031,8 +19031,9 @@ declare namespace VEHICLE {
 	Begins leaking gas at around 650 health
 	-999.90002441406 appears to be minimum health, although nothing special occurs **/
 	function SET_VEHICLE_PETROL_TANK_HEALTH(vehicle: EntityHandle, health: float): void
-	/** p1 can be anywhere from 0 to 3 in the scripts. p2 is generally somewhere in the 1000 to 10000 range. **/
-	function IS_VEHICLE_STUCK_TIMER_UP(vehicle: EntityHandle, p1: int, p2: int): boolean
+	/** p1 can be anywhere from 0 to 3 in the scripts.
+	p2 being how long in milliseconds the vehicle has been stuck **/
+	function IS_VEHICLE_STUCK_TIMER_UP(vehicle: EntityHandle, p1: int, ms: int): boolean
 	/** The inner function has a switch on the second parameter. It's the stuck timer index.
 	
 	Here's some pseudo code I wrote for the inner function:
@@ -19154,7 +19155,7 @@ declare namespace VEHICLE {
 	/**  **/
 	function SET_HELI_TAIL_ROTOR_HEALTH(vehicle: EntityHandle, health: float): void
 	/**  **/
-	function SET_HELI_TAIL_BOOM_CAN_BREAK_OFF(vehicle: EntityHandle, toggle: boolean): void
+	function SET_HELI_TAIL_BOOM_CAN_BREAK_OFF(vehicle: EntityHandle, toggle: boolean): boolean
 	/** NOTE: Debugging functions are not present in the retail version of the game. **/
 	function SET_VEHICLE_NAME_DEBUG(vehicle: EntityHandle, name: string): void
 	/** Sets a vehicle to be strongly resistant to explosions. p0 is the vehicle; set p1 to false to toggle the effect on/off. **/
@@ -19220,15 +19221,15 @@ declare namespace VEHICLE {
 	/**  **/
 	function GET_ENTITY_ATTACHED_TO_TOW_TRUCK(towTruck: EntityHandle): EntityHandle
 	/**  **/
-	function SET_VEHICLE_AUTOMATICALLY_ATTACHES(vehicle: EntityHandle, p1: boolean, p2: any): any
+	function SET_VEHICLE_AUTOMATICALLY_ATTACHES(vehicle: EntityHandle, p1: boolean, p2: any): EntityHandle
 	/** Sets the arm position of a bulldozer. Position must be a value between 0.0 and 1.0. Ignored when `p2` is set to false, instead incrementing arm position by 0.1 (or 10%). **/
 	function SET_VEHICLE_BULLDOZER_ARM_POSITION(vehicle: EntityHandle, position: float, p2: boolean): void
 	/**  **/
 	function SET_VEHICLE_TANK_TURRET_POSITION(vehicle: EntityHandle, position: float, p2: boolean): void
 	/**  **/
-	function SET_VEHICLE_TURRET_TARGET(p0: any, p1: any, p2: any, p3: any, p4: any, p5: any): void
+	function SET_VEHICLE_TURRET_TARGET(vehicle: EntityHandle, p1: any, p2: any, p3: any, p4: any, p5: any): void
 	/**  **/
-	function SET_VEHICLE_TANK_STATIONARY(p0: any, p1: any): void
+	function SET_VEHICLE_TANK_STATIONARY(vehicle: EntityHandle, p1: boolean): void
 	/**  **/
 	function SET_VEHICLE_TURRET_SPEED_THIS_FRAME(vehicle: EntityHandle, speed: float): void
 	/**  **/
@@ -19495,7 +19496,7 @@ declare namespace VEHICLE {
 	Returns -1 if the vehicle mod is stock **/
 	function GET_VEHICLE_MOD(vehicle: EntityHandle, modType: int): int
 	/** Only used for wheels(ModType = 23/24) Returns true if the wheels are custom wheels **/
-	function GET_VEHICLE_MOD_VARIATION(vehicle: EntityHandle, modType: int): boolean
+	function GET_VEHICLE_MOD_VARIATION(vehicle: EntityHandle, modType: int): int
 	/** Returns how many possible mods a vehicle has for a given mod type **/
 	function GET_NUM_VEHICLE_MODS(vehicle: EntityHandle, modType: int): int
 	/**  **/
@@ -19611,9 +19612,9 @@ declare namespace VEHICLE {
 	/** Sets some bit and float of vehicle. float is >= 0 **/
 	function SET_PEDS_CAN_FALL_OFF_THIS_VEHICLE_FROM_LARGE_FALL_DAMAGE(vehicle: EntityHandle, toggle: boolean, p2: float): void
 	/**  **/
-	function ADD_VEHICLE_COMBAT_ANGLED_AVOIDANCE_AREA(p0: float, p1: float, p2: float, p3: float, p4: float, p5: float, p6: float): any
+	function ADD_VEHICLE_COMBAT_ANGLED_AVOIDANCE_AREA(p0: float, p1: float, p2: float, p3: float, p4: float, p5: float, p6: float): int
 	/**  **/
-	function REMOVE_VEHICLE_COMBAT_AVOIDANCE_AREA(p0: any): void
+	function REMOVE_VEHICLE_COMBAT_AVOIDANCE_AREA(p0: int): void
 	/**  **/
 	function IS_ANY_PED_RAPPELLING_FROM_HELI(vehicle: EntityHandle): boolean
 	/** <1.0 - Decreased torque
@@ -19736,7 +19737,7 @@ declare namespace VEHICLE {
 	/**  **/
 	function ARE_PLANE_PROPELLERS_INTACT(plane: EntityHandle): boolean
 	/**  **/
-	function SET_PLANE_PROPELLER_HEALTH(plane: EntityHandle, health: float): void
+	function SET_PLANE_PROPELLER_HEALTH(plane: EntityHandle, health: float): boolean
 	/**  **/
 	function SET_VEHICLE_CAN_DEFORM_WHEELS(vehicle: EntityHandle, toggle: boolean): void
 	/** Only returns true if the vehicle was marked as stolen with SET_VEHICLE_IS_STOLEN. **/
@@ -19759,13 +19760,13 @@ declare namespace VEHICLE {
 	/**  **/
 	function DETACH_VEHICLE_FROM_ANY_CARGOBOB(vehicle: EntityHandle): boolean
 	/**  **/
-	function DETACH_ENTITY_FROM_CARGOBOB(cargobob: EntityHandle, entity: EntityHandle): any
+	function DETACH_ENTITY_FROM_CARGOBOB(cargobob: EntityHandle, entity: EntityHandle): boolean
 	/**  **/
 	function IS_VEHICLE_ATTACHED_TO_CARGOBOB(cargobob: EntityHandle, vehicleAttached: EntityHandle): boolean
 	/** Returns attached vehicle (Vehicle in parameter must be cargobob) **/
 	function GET_VEHICLE_ATTACHED_TO_CARGOBOB(cargobob: EntityHandle): EntityHandle
 	/**  **/
-	function GET_ENTITY_ATTACHED_TO_CARGOBOB(p0: any): any
+	function GET_ENTITY_ATTACHED_TO_CARGOBOB(p0: any): EntityHandle
 	/**  **/
 	function ATTACH_VEHICLE_TO_CARGOBOB(vehicle: EntityHandle, cargobob: EntityHandle, p2: int, x: float, y: float, z: float): void
 	/**  **/
@@ -19775,7 +19776,7 @@ declare namespace VEHICLE {
 	/**  **/
 	function SET_CARGOBOB_EXCLUDE_FROM_PICKUP_ENTITY(p0: any, p1: any): void
 	/**  **/
-	function CAN_CARGOBOB_PICK_UP_ENTITY(p0: any, p1: any): any
+	function CAN_CARGOBOB_PICK_UP_ENTITY(p0: any, p1: any): boolean
 	/** Gets the position of the cargobob hook, in world coords. **/
 	function GET_ATTACHED_PICK_UP_HOOK_POSITION(cargobob: EntityHandle): Vector3
 	/** Returns true only when the hook is active, will return false if the magnet is active **/
@@ -19909,7 +19910,7 @@ declare namespace VEHICLE {
 	/**  **/
 	function CLEAR_VEHICLE_ROUTE_HISTORY(vehicle: EntityHandle): void
 	/**  **/
-	function DOES_VEHICLE_EXIST_WITH_DECORATOR(decorator: string): boolean
+	function DOES_VEHICLE_EXIST_WITH_DECORATOR(decorator: string): EntityHandle
 	/** Used to be incorrectly named SET_VEHICLE_EXCLUSIVE_DRIVER
 	Toggles a flag related to SET_VEHICLE_EXCLUSIVE_DRIVER, however, doesn't enable that feature (or trigger script events related to it). **/
 	function SET_VEHICLE_AI_CAN_USE_EXCLUSIVE_SEATS(vehicle: EntityHandle, toggle: boolean): void
@@ -20042,7 +20043,7 @@ declare namespace VEHICLE {
 	2 - jump using wheel **/
 	function SET_HYDRAULIC_WHEEL_STATE(vehicle: EntityHandle, wheelId: int, state: int, value: float, p4: any): void
 	/**  **/
-	function HAS_VEHICLE_PETROLTANK_SET_ON_FIRE_BY_ENTITY(p0: any, p1: any): any
+	function HAS_VEHICLE_PETROLTANK_SET_ON_FIRE_BY_ENTITY(p0: any, p1: any): boolean
 	/**  **/
 	function CLEAR_VEHICLE_PETROLTANK_FIRE_CULPRIT(vehicle: EntityHandle): void
 	/** Controls how fast bobbleheads and tsurikawas move on each axis.
@@ -20050,13 +20051,13 @@ declare namespace VEHICLE {
 	p2 is probably z, but changing that value didn't seem to have a noticeable effect. **/
 	function SET_VEHICLE_BOBBLEHEAD_VELOCITY(x: float, y: float, p2: float): void
 	/**  **/
-	function GET_VEHICLE_IS_DUMMY(p0: any): any
+	function GET_VEHICLE_IS_DUMMY(p0: any): boolean
 	/**  **/
-	function SET_VEHICLE_DAMAGE_SCALE(vehicle: EntityHandle, p1: float): any
+	function SET_VEHICLE_DAMAGE_SCALE(vehicle: EntityHandle, p1: float): boolean
 	/**  **/
-	function SET_VEHICLE_WEAPON_DAMAGE_SCALE(vehicle: EntityHandle, multiplier: float): void
+	function SET_VEHICLE_WEAPON_DAMAGE_SCALE(vehicle: EntityHandle, multiplier: float): boolean
 	/**  **/
-	function SET_DISABLE_DAMAGE_WITH_PICKED_UP_ENTITY(p0: any, p1: any): any
+	function SET_DISABLE_DAMAGE_WITH_PICKED_UP_ENTITY(p0: any, p1: any): boolean
 	/**  **/
 	function SET_VEHICLE_USES_MP_PLAYER_DAMAGE_MULTIPLIER(p0: any, p1: any): void
 	/** When enabled, the player won't fall off the bike when landing from large heights. **/
@@ -20144,11 +20145,11 @@ declare namespace VEHICLE {
 	- 7: Black, yellow **/
 	function VEHICLE_SET_PARACHUTE_MODEL_TINT_INDEX(vehicle: EntityHandle, textureVariation: int): void
 	/**  **/
-	function VEHICLE_SET_OVERRIDE_EXTENABLE_SIDE_RATIO(p0: any, p1: any): any
+	function VEHICLE_SET_OVERRIDE_EXTENABLE_SIDE_RATIO(p0: any, p1: any): int
 	/**  **/
-	function VEHICLE_SET_EXTENABLE_SIDE_TARGET_RATIO(p0: any, p1: any): any
+	function VEHICLE_SET_EXTENABLE_SIDE_TARGET_RATIO(p0: any, p1: any): int
 	/**  **/
-	function VEHICLE_SET_OVERRIDE_SIDE_RATIO(p0: any, p1: any): any
+	function VEHICLE_SET_OVERRIDE_SIDE_RATIO(p0: any, p1: any): int
 	/**  **/
 	function GET_ALL_VEHICLES(vehsStruct: Address): int
 	/**  **/
@@ -20836,7 +20837,7 @@ declare namespace WEAPON {
 	/**  **/
 	function IS_FLASH_LIGHT_ON(ped: EntityHandle): boolean
 	/**  **/
-	function SET_FLASH_LIGHT_FADE_DISTANCE(distance: float): any
+	function SET_FLASH_LIGHT_FADE_DISTANCE(distance: float): boolean
 	/** Enables/disables flashlight on ped's weapon. **/
 	function SET_FLASH_LIGHT_ACTIVE_HISTORY(ped: EntityHandle, toggle: boolean): void
 	/** Changes the selected ped aiming animation style. 
