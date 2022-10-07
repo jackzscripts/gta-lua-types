@@ -1,3 +1,5 @@
+/** @noSelfInFile **/
+
 /** @compileMembersOnly */
 declare enum CommandPermission {
     COMMANDPERM_FRIENDLY,

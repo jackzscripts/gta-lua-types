@@ -8,7 +8,8 @@
         "typescript-to-lua": "^1.10.1"
     },
     "scripts": {
-        "build": "node scripts/convert-natives.js && node scripts/convert-stand.js"
+        "build": "node scripts/convert-natives.js && node scripts/convert-stand.js",
+        "update": "cd scripts/gta5-nativedb-data; git pull"
     },
     "license": "MIT",
     "dependencies": {
