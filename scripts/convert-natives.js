@@ -45,7 +45,7 @@ for(const [namespace, natives] of Object.entries(NATIVES)) {
 }
 
 function _generate_params(params) {
-    const output = []
+    const output = [`this: void`]
     for(const param of params) {
         if(param.name == "var") param.name = 'variable'
         output.push(`${param.name}: ${_convert_type(param.type)}`)

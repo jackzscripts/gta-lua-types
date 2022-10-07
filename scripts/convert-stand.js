@@ -79,7 +79,7 @@ for(const [namespace, funcs] of Object.entries(namespaces)) {
 }
 
 function _generate_params(params) {
-    const output = []
+    const output = [`this: void`]
     let hasOptional = false
     for(const param of params) {
         if(param.type === "...") return `...arguments: any`
