@@ -32,7 +32,7 @@ declare enum ClickFlag {
     CLICK_FLAG_WEB
 }
 
-interface CommandRef {
+interface CommandRef extends CommandUniqPtr {
     isValid: () => boolean,
     refByRelPath: () => CommandRef
     delete: () => void
